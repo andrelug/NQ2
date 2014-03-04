@@ -25,7 +25,7 @@ body, *{
 }
 .container{
     width: 300%;
-    height: 300%;
+    height: 400%;
 }
 .bottom{
     position: fixed;
@@ -42,7 +42,7 @@ input{
     margin-top: 15px;
     margin-bottom: 0;
 }
-.input1, .input2, .input3{
+.input1, .input2, .input3, .input4{
     padding: 6% 0 0 10%;
     position: relative;
 }
@@ -63,11 +63,11 @@ input{
     display: block;
     cursor: pointer;
 }
-.input2 h2, .input3 h2{
+.input2 h2, .input3 h2, .input4 h2{
     font-size: 20pt;
     margin: 0;
 }
-.input2 h3, .input2 h3 span{
+.input2 h3, .input2 h3 span, .input4 h2 span{
     font-size: 16pt;
     margin: 40px 0 0 40px;
     display: none;
@@ -110,6 +110,11 @@ input{
     left: -450px;
     bottom: -450px;
 }
+#backChart{
+    position: absolute;
+    bottom: -600px;
+    left: -100px;
+}
 .canva1p{
     position: absolute;
     display: none;
@@ -126,18 +131,32 @@ input{
     color: white;
     font-size: 15pt;
 }
-
-
+.canva2a, .register{
+    position: absolute;
+    display: none;
+    left: 42%;
+    background-color: rgba(74,77,77,1);
+    text-align: center;
+    text-decoration: none;
+    padding: 14px;
+    color: white;
+    font-size: 15pt;
+    width: 200px;
+}
+.register{
+    bottom: -200px;
+    display: block !important;
+}
 
 .gender{
     display: none;
     overflow: auto;
 }
-.gender li{
+.gender li, .input5 li{
     float: left;
     margin-right: 35px;
 }
-.gender li a{
+.gender li a, .input5 li a{
     text-align: center;
     text-decoration: none;
     height: auto;
@@ -147,7 +166,7 @@ input{
     opacity: 0.9;
     display: block;
 }
-.gender li a:hover{
+.gender li a:hover, .input5 li a:hover{
     background-color: rgb(106, 111, 111);
 }
 .input3 h5{
@@ -173,4 +192,61 @@ input{
 .input3 h4{
     margin: 10px 0 0 200px;
     display: none;
+}
+.pass{
+    position: fixed;
+    width: 220px;
+    top: 30px;
+    left: -200px;
+    background-color: #5C5F5F;
+    z-index: 999;
+}
+.pass input, .input5 input{
+    height: 50px;
+    width: 100px;
+    font-size: 14pt;
+    margin: 0;
+}
+.input4 h2 span{
+    top: 10px;
+    position: relative;
+}
+.input4 h3{
+    display: none;
+    position: relative;
+    top: 40px;
+    left: 30px;
+}
+.input5{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: white;
+    padding: 15% 0 0 21%;
+}
+.input5 h1{
+    font-size: 20pt;
+    margin-bottom: 20px;
+}
+.submit{
+    cursor: pointer;
+    background-color: #5C5F5F;
+    color: white;
+}
+.input5 input{
+    margin-left: 10px;
+}
+.input5 ul{
+    margin-top: 20px;
+}
+.facebook{
+    background-color: #4764B3;
+}
+.twitter{
+    background-color: #00ACEE;
+}
+.linkedin{
+    background-color: #B1C9ED;
 }

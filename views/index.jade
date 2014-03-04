@@ -3,6 +3,9 @@ extends layout
 block content
     div.login
         a.appended(href="#")
+    div.pass
+        input(type="text", placeholder="username")
+        input(type="password", placeholder="password")
 
     div.window.area
         div.container
@@ -36,5 +39,32 @@ block content
                         a.female(href="#") Female
                 h3
                 h4
+                a.canva2a(href="#") continue
 
                 canvas#ageChart(width="500", height="500")
+
+            div.input4.area
+                h2 We like analytics and privacy
+                    span as well as animations
+                h3 Do you want to experience how awesome your stats can look like?
+                a.register(href="#") Register
+            
+            div.input5.area
+                h1 Welcome to Normal Questions
+
+                form
+                    input(type="text", placeholder="First Name")
+
+                    input(type="text", placeholder="Last Name")
+
+                    input(type="password", placeholder="Password")
+
+                    input.submit(type="submit", value="Register")
+
+                ul
+                    li
+                        a.facebook(href="#") Facebook login
+                    li
+                        a.twitter(href="#") Twitter login
+                    li
+                        a.linkedin(href="#") LinkedIn Login

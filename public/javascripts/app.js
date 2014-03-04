@@ -6,6 +6,15 @@ var appe = $('.appended');
 var name;
 var age;
 
+$('.pass').on('click', function () {
+    $(this).animate({ 'left': 10 });
+});
+$('.pass').on('dblclick', function () {
+    $(this).animate({ 'left': -200 });
+});
+
+
+
 $('.appender').on('keyup', function (event) {
     name = $(this).val();
     appe.html(name);
@@ -67,6 +76,9 @@ $('.appenderAge input').on('keyup', function(event){
     }
 });
 
+
+
+
 var male = $('.male'),
     female = $('.female'),
     users = { total: 7580, male: 4343, female: 3242, ageNum: 322 };
@@ -75,8 +87,10 @@ male.on('click', function () {
     appe.html(name + ', male, ' + +age + ' yrs');
     female.addClass('grayed');
     $('#ageChart').animate({'bottom': offsets.top / 2,'left': offsets.left / 2}, function(){
-        $('.input3 h3').fadeIn(600).html(users.male + " other men in our site", function () {
-            $('.ageStats').fadeIn().after(age + ' yrs old');
+        $('.input3 h3').html('Right now we have ' + users.male + " other men in our site").fadeIn(800, function () {
+            $('.input3 h4').html("and "+ Math.round(users.ageNum * 100 / users.total) + '% of them are also ' + age + ' yrs old').fadeIn(800, function(){
+                $('.canva2a').css('top', '80%').fadeIn(1000).css('dispay', 'block');
+            });
         });
     });
 });
@@ -85,11 +99,31 @@ female.on('click', function () {
     male.addClass('grayed');
     $('#ageChart').animate({ 'bottom': offsets.top / 2, 'left': offsets.left / 2 }, function () {
         $('.input3 h3').html('Right now we have ' + users.female + " other women in our site").fadeIn(800, function () {
-            $('.input3 h4').html("and "+ Math.round(users.ageNum * 100 / users.total) + '% of them are also' + age + ' yrs old').fadeIn(800);
+            $('.input3 h4').html("and "+ Math.round(users.ageNum * 100 / users.total) + '% of them are also ' + age + ' yrs old').fadeIn(800, function(){
+                $('.canva2a').css('top', '80%').fadeIn(1000).css('dispay', 'block');
+            });
         });
     });
 });
+var step3 = function () {
+    $('.input3').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
+        $('.input4 h2').fadeIn(700, function () {
+            $('.input4 h2 span').delay(300).fadeIn(700, function () {
+                $('.input4 h3').delay(400).slideDown(500, function () {
+                    $('.register').animate({ 'bottom': 200 }, 700);
+                });
+            });
+        });
+    });
+}
 
+$('.canva2a').on('click', function () {
+    step3();
+});
+
+$('.register').on('click', function () {
+    $('.input5').show(600);
+});
 
 var data = [
     {value: 4, color: "#F7464A"},
