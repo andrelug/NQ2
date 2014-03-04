@@ -1,0 +1,19 @@
+Error: C:\Users\Andre\Documents\My Web Sites\NQ2\views\layout.jade:23
+    21| 
+    22|                 if(e.which !== ENTER_KEY || !this.$input.val().trim()) {
+  > 23| 				    alert('dey');
+    24| 			    }
+    25|             });
+
+Invalid indentation, you can use tabs or spaces but not both
+    at Object.Lexer.indent (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\lexer.js:762:15)
+    at Object.Lexer.next (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\lexer.js:870:15)
+    at Object.Lexer.lookahead (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\lexer.js:114:46)
+    at Parser.lookahead (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\parser.js:100:23)
+    at Parser.peek (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\parser.js:77:17)
+    at Parser.parseTextBlock (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\parser.js:652:30)
+    at Parser.parseTextBlock (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\parser.js:658:16)
+    at Parser.tag (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\parser.js:803:26)
+    at Parser.parseTag (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\parser.js:719:17)
+    at Parser.parseExpr (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\parser.js:188:21)
+connection error: [Error: failed to connect to [localhost:27017]]

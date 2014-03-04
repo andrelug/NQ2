@@ -1,0 +1,21 @@
+Express server listening on port \\.\pipe\5413c9c7-44b2-49db-856f-64790a94d00c
+[90mGET / [32m200 [90m301ms - 1.12kb[0m
+[90mGET /javascripts/jquery.min.map [33m404 [90m3ms[0m
+[90mGET /javascripts/jquery.min.map [33m404 [90m0ms[0m
+[90mGET / [32m200 [90m32ms - 1.12kb[0m
+[90mGET / [32m200 [90m20ms - 1.12kb[0m
+[90mGET / [32m200 [90m19ms - 1.12kb[0m
+[90mGET / [36m304 [90m18ms[0m
+[90mGET / [32m200 [90m17ms - 1.12kb[0m
+[90mGET / [32m200 [90m22ms - 1.12kb[0m
+[90mGET / [32m200 [90m13ms - 1.12kb[0m
+[90mGET / [32m200 [90m15ms - 1.12kb[0m
+[90mGET / [32m200 [90m15ms - 1.12kb[0m
+[90mGET / [36m304 [90m15ms[0m
+[90mGET / [36m304 [90m20ms[0m
+[90mGET / [36m304 [90m10ms[0m
+[90mGET / [32m200 [90m14ms - 1.12kb[0m
+[90mGET / [32m200 [90m12ms - 1.12kb[0m
+[90mGET / [32m200 [90m13ms - 1.12kb[0m
+[90mGET / [32m200 [90m18ms - 1.12kb[0m
+[90mGET / [32m200 [90m12ms - 1.12kb[0m

@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    div.login
+        a.appended(href="#")
+
+    div.window.area
+        div.container
+            div.input1.area
+                h2 What is your name?
+                input.appender(type="text", autofocus)
+                a.submits(href="#") enter
+            div.input2.area
+                div.appenderAge
+                    input(type="text", placeholder="How old are you?")
+                    a.submitsAge(href="#") enter
+                h2 Hi 
+                    span.appended2
+                |welcome to Normal Questions
+
+                h3 Everyone is different
+                    span ...but how much?
+                p.canva1p
+                a.canva1a(href="#") continue
+
+                canvas#chart(width="150", height="150")
+
+            div.input3.area
+                h2 Great!
+                h5 now choose which option describes you best
+
+                ul.gender
+                    li
+                        a.male(href="#") Male
+                    li
+                        a.female(href="#") Female
