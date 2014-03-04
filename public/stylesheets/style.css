@@ -52,6 +52,7 @@ input{
     top: 0;
     display: none;
     cursor: pointer;
+    z-index: 999;
 }
 .login .appended{
     background-color: rgba(74,77,77,1);
@@ -71,7 +72,7 @@ input{
     margin: 40px 0 0 40px;
     display: none;
 }
-.input2 h3 span{
+.input2 h3 span, .input3 h4{
     position: relative;
     top: 30px;
 }
@@ -96,34 +97,41 @@ input{
 }
 #chart{
     position: absolute;
-    left: -180px;
-    top: 30px;
-    transform: rotate(61deg);
-    -webkit-transform: rotate(61deg);
-    -moz-transform: rotate(61deg);
-    -o-transform: rotate(61deg);
-    -ms-transform: rotate(61deg);
+    left: -610px;
+    top: -300px;
+    transform: rotate(124deg);
+    -webkit-transform: rotate(124deg);
+    -moz-transform: rotate(124deg);
+    -o-transform: rotate(124deg);
+    -ms-transform: rotate(124deg);
+}
+#ageChart{
+    position: absolute;
+    left: -450px;
+    bottom: -450px;
 }
 .canva1p{
     position: absolute;
     display: none;
-    left: 323px;
+    left: 270px;
 }
 .canva1a{
     position: absolute;
     display: none;
-    left: 444px;
+    left: 347px;
     background-color: rgba(74,77,77,1);
     text-align: center;
     text-decoration: none;
-    padding: 10px;
+    padding: 14px;
     color: white;
+    font-size: 15pt;
 }
 
 
 
 .gender{
     display: none;
+    overflow: auto;
 }
 .gender li{
     float: left;
@@ -155,6 +163,14 @@ input{
     cursor: default !important;
     opacity: 0.2 !important;
 }
-.grayed:hover{
+.grayed:hover {
     background-color: rgba(0, 0, 0, 0.55) !important;
+}
+.input3 h3{
+    margin-top: 60px;
+    display: none;
+}
+.input3 h4{
+    margin: 10px 0 0 200px;
+    display: none;
 }

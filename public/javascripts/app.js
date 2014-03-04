@@ -5,39 +5,41 @@ var submiAge = $('.submitsAge');
 var appe = $('.appended');
 var name;
 var age;
-$('.appender').on('keyup', function(event){
+
+$('.appender').on('keyup', function (event) {
     name = $(this).val();
     appe.html(name);
     $('.appended2').html(name);
     submi.fadeIn().css('display', 'block');
-    if(!name){
+    if (!name) {
         submi.fadeOut();
     }
 
-    var step1 = function(){
+    var step1 = function () {
         $('.login').slideDown();
-        $('.input1').animate({'margin-top': -offsets.top}, 1000, 'swing', function(){
-            $('.input2 h3').fadeIn(1500, function(){
-                $('.input2 h3 span').delay(500).fadeIn(500, function(){
-                    $('#chart').animate({'left': 150}, 500, 'swing', function(){
-                        $('.canva1p').show().html('4% of our users are called ' + name).animate({'top': 56}, 400, function(){
-                            $('.canva1a').css('top', 93).fadeIn(1000).css('dispay', 'block');
+        $('.input1').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
+            $('.input2 h3').fadeIn(1500, function () {
+                $('.input2 h3 span').delay(500).fadeIn(500, function () {
+                    $('#chart').animate({ 'left': -300 }, 500, 'swing', function () {
+                        $('.canva1p').show().html('4% of our users are called ' + name).animate({ 'top': 185 }, 400, function () {
+                            $('.canva1a').css('top', 110).fadeIn(1000).css('dispay', 'block');
                         });
                     });
                 });
             });
-        }); 
+        });
     }
 
-    $('.canva1a').on('click', function(){
-        $('.appenderAge').animate({'height': 90}).slideDown(300);
+    $('.canva1a').on('click', function () {
+        $('.appenderAge').animate({ 'height': 90 }).slideDown(300);
+        $('.canva1a').fadeOut();
     });
-                
 
-    submi.on('click', function(){
+
+    submi.on('click', function () {
         step1();
     });
-    if(event.keyCode == 13){
+    if (event.keyCode == 13) {
         step1();
     }
 });
@@ -66,15 +68,26 @@ $('.appenderAge input').on('keyup', function(event){
 });
 
 var male = $('.male'),
-    female = $('.female');
+    female = $('.female'),
+    users = { total: 7580, male: 4343, female: 3242, ageNum: 322 };
 
 male.on('click', function () {
     appe.html(name + ', male, ' + +age + ' yrs');
     female.addClass('grayed');
+    $('#ageChart').animate({'bottom': offsets.top / 2,'left': offsets.left / 2}, function(){
+        $('.input3 h3').fadeIn(600).html(users.male + " other men in our site", function () {
+            $('.ageStats').fadeIn().after(age + ' yrs old');
+        });
+    });
 });
 female.on('click', function () {
     appe.html(name + ', female, ' + +age + ' yrs');
     male.addClass('grayed');
+    $('#ageChart').animate({ 'bottom': offsets.top / 2, 'left': offsets.left / 2 }, function () {
+        $('.input3 h3').html('Right now we have ' + users.female + " other women in our site").fadeIn(800, function () {
+            $('.input3 h4').html("and "+ Math.round(users.ageNum * 100 / users.total) + '% of them are also' + age + ' yrs old').fadeIn(800);
+        });
+    });
 });
 
 
@@ -85,3 +98,16 @@ var data = [
 var options = {animation: true}
 var ctx = $("#chart").get(0).getContext("2d");
 var theChart = new Chart(ctx).Doughnut(data,options);
+
+var ageData = [
+	{
+	    value: 4343,
+	    color: "#36B9B2"
+	},
+	{
+	    value: 3242,
+	    color: "#EBA087"
+	}
+];
+var ageCtx = $("#ageChart").get(0).getContext("2d");
+var ageChart = new Chart(ageCtx).Pie(ageData);
