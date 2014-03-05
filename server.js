@@ -5,7 +5,7 @@ var express = require('express')
   , mongoose = require('mongoose');
 
 var app = express();
-
+/*
 mongoose.connect('mongodb://localhost/normalquestions');
 
 var QuestionSchema = new mongoose.Schema({
@@ -67,7 +67,7 @@ var UserSchema = new mongoose.Schema({
     deleted: {type: Boolean, default: false}
 }),
     Users = mongoose.model('Users', UserSchema);
-
+    */
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
