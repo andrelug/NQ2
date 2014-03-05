@@ -1,0 +1,2 @@
+Express server listening on port \\.\pipe\5ddc98d9-1358-401f-8557-e2862165db8e
+[90mGET /users/andrelug/edit [32m200 [90m341ms - 1.38kb[0m

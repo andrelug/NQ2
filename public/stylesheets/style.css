@@ -228,7 +228,7 @@ input{
 }
 .input5 h1{
     font-size: 20pt;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .submit{
     cursor: pointer;
@@ -239,7 +239,7 @@ input{
     margin-left: 10px;
 }
 .input5 ul{
-    margin-top: 20px;
+    margin-top: 30px;
 }
 .facebook{
     background-color: #4764B3;

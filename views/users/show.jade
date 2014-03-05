@@ -1,0 +1,21 @@
+h1 #{user.name.first}
+
+ul
+    li #{user.name.first}
+    li #{user.name.middle}
+    li #{user.name.last}
+    li #{user.name.nickName}
+    li #{user.name.loginName}
+    li #{user.birthDate}
+    li #{user.gender}
+    li #{user.email}
+    li #{user.localization.country}
+    li #{user.localization.state}
+    li #{user.localization.city}
+    li #{user.localization.zipcode}
+    li #{user.localization.telephone}
+
+ul
+    li: a(href="/users/#{user.name.loginName}/edit") Edit
+    li
+        form(action="/users/#{user.name.loginName}/delete")

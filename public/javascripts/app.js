@@ -1,50 +1,89 @@
-var offsets = $('.bottom').offset();
-$('.area').css('width', offsets.left).css('height', offsets.top);
-var submi = $('.submits');
-var submiAge = $('.submitsAge');
-var appe = $('.appended');
-var name;
-var age;
+// Variables
+var offsets = $('.bottom').offset(),  // get the client's window size
+    submi = $('.submits'),
+    submiAge = $('.submitsAge'),
+    appe = $('.appended'),
+    name,
+    age,
+    male = $('.male'),
+    female = $('.female'),
+    users = { total: 7580, male: 4343, female: 3242, ageNum: 322 },  // Get the information from the server about the users and age selected
+    data = [                          // Dounut chart info
+        {value: 4, color: "#F7464A"},
+        {value: 96, color: "#4D5360"}
+    ],
+    ctx = $("#chart").get(0).getContext("2d"),
+    theChart = new Chart(ctx).Doughnut(data),      // Initialize Dounut chart
+    ageData = [          // Age chart data
+	    {
+	        value: 4343,
+	        color: "#36B9B2"
+	    },
+	    {
+	        value: 3242,
+	        color: "#EBA087"
+	    }
+    ],
+    ageCtx = $("#ageChart").get(0).getContext("2d"),
+    ageChart = new Chart(ageCtx).Pie(ageData);          // Initialize age chart
 
+// Define the area of each step
+$('.area').css('width', offsets.left).css('height', offsets.top);
+// Creates the functionality for the login tab
 $('.pass').on('click', function () {
     $(this).animate({ 'left': 10 });
 });
 $('.pass').on('dblclick', function () {
     $(this).animate({ 'left': -200 });
 });
+// Step Functions
 
+var step1 = function () {
+    $('.login').slideDown();
+    $('.input1').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
+        $('.input2 h3').fadeIn(1500, function () {
+            $('.input2 h3 span').delay(500).fadeIn(500, function () {
+                $('#chart').animate({ 'left': -300 }, 500, 'swing', function () {
+                    $('.canva1p').show().html('4% of our users are called ' + name).animate({ 'top': 185 }, 400, function () {
+                        $('.canva1a').css('top', 110).fadeIn(1000).css('dispay', 'block');
+                    });
+                });
+            });
+        });
+    });
+}
 
+var step2 = function(){
+    $('.input2').animate({'margin-top': -offsets.top}, 1000, 'swing', function(){
+        $('.gender').fadeIn(500);
+    });
+}
 
+var step3 = function () {
+    $('.input3').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
+        $('.input4 h2').fadeIn(700, function () {
+            $('.input4 h2 span').delay(300).fadeIn(700, function () {
+                $('.input4 h3').delay(400).slideDown(500, function () {
+                    $('.register').animate({ 'bottom': 200 }, 700);
+                });
+            });
+        });
+    });
+}
+
+// Get name function
 $('.appender').on('keyup', function (event) {
-    name = $(this).val();
-    appe.html(name);
-    $('.appended2').html(name);
+    name = $(this).val();  // Register the value typed
+    appe.html(name); // append the value to the top bar
+    $('.appended2').html(name);  // append the value to the greeting step2
+
+    // Deals with the submit button
     submi.fadeIn().css('display', 'block');
     if (!name) {
         submi.fadeOut();
     }
 
-    var step1 = function () {
-        $('.login').slideDown();
-        $('.input1').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
-            $('.input2 h3').fadeIn(1500, function () {
-                $('.input2 h3 span').delay(500).fadeIn(500, function () {
-                    $('#chart').animate({ 'left': -300 }, 500, 'swing', function () {
-                        $('.canva1p').show().html('4% of our users are called ' + name).animate({ 'top': 185 }, 400, function () {
-                            $('.canva1a').css('top', 110).fadeIn(1000).css('dispay', 'block');
-                        });
-                    });
-                });
-            });
-        });
-    }
-
-    $('.canva1a').on('click', function () {
-        $('.appenderAge').animate({ 'height': 90 }).slideDown(300);
-        $('.canva1a').fadeOut();
-    });
-
-
+    // Relates the step1 function to the enter key and button click
     submi.on('click', function () {
         step1();
     });
@@ -52,22 +91,19 @@ $('.appender').on('keyup', function (event) {
         step1();
     }
 });
+
+// Age input functionality
 $('.appenderAge input').on('keyup', function(event){
-    age = $(this).val();
-    $('.appenderAge').animate({'height': 165});
-    appe.html(name + ', ' + age + ' yrs');
-    submiAge.fadeIn(350).css('display', 'block').css('margin-bottom', 15);
+    age = $(this).val(); // Get the value typed
+    $('.appenderAge').animate({'height': 165}); // Animate the submit button
+    appe.html(name + ', ' + age + ' yrs'); // append value to the top bar
+    submiAge.fadeIn(350).css('display', 'block').css('margin-bottom', 15); // makes the input button appear
+    // Makes the input butto desapear
     if(!age){
         submiAge.fadeOut();
         $('.appenderAge').animate({'height': 90});
     }
-
-    var step2 = function(){
-        $('.input2').animate({'margin-top': -offsets.top}, 1000, 'swing', function(){
-            $('.gender').fadeIn(500);
-        });
-    }
-
+    // Execute action to step2 both with enter key and button click
     submiAge.on('click', function(){
         step2();
     });
@@ -76,13 +112,13 @@ $('.appenderAge input').on('keyup', function(event){
     }
 });
 
+// Makes the age input appear
+$('.canva1a').on('click', function () {
+    $('.appenderAge').animate({ 'height': 90 }).slideDown(300);
+    $('.canva1a').fadeOut();
+});
 
-
-
-var male = $('.male'),
-    female = $('.female'),
-    users = { total: 7580, male: 4343, female: 3242, ageNum: 322 };
-
+// Creates functionality for both male and female click functions and proceeds to next step
 male.on('click', function () {
     appe.html(name + ', male, ' + +age + ' yrs');
     female.addClass('grayed');
@@ -105,43 +141,11 @@ female.on('click', function () {
         });
     });
 });
-var step3 = function () {
-    $('.input3').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
-        $('.input4 h2').fadeIn(700, function () {
-            $('.input4 h2 span').delay(300).fadeIn(700, function () {
-                $('.input4 h3').delay(400).slideDown(500, function () {
-                    $('.register').animate({ 'bottom': 200 }, 700);
-                });
-            });
-        });
-    });
-}
-
+// Last step to proceed to the register landing page
 $('.canva2a').on('click', function () {
     step3();
 });
-
+// Show register modal
 $('.register').on('click', function () {
     $('.input5').show(600);
 });
-
-var data = [
-    {value: 4, color: "#F7464A"},
-    {value: 96, color: "#4D5360"}
-];
-var options = {animation: true}
-var ctx = $("#chart").get(0).getContext("2d");
-var theChart = new Chart(ctx).Doughnut(data,options);
-
-var ageData = [
-	{
-	    value: 4343,
-	    color: "#36B9B2"
-	},
-	{
-	    value: 3242,
-	    color: "#EBA087"
-	}
-];
-var ageCtx = $("#ageChart").get(0).getContext("2d");
-var ageChart = new Chart(ageCtx).Pie(ageData);

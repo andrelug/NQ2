@@ -1,0 +1,20 @@
+Express server listening on port \\.\pipe\9169d93a-59e9-4be3-a193-a1e4dd27cc05
+[90mGET / [36m304 [90m443ms[0m
+[90mGET /users [36m304 [90m32ms[0m
+[90mGET /users/{%20loginName:%20'andrelug',%20%20nickName:%20'pamas',%20%20last:%20'Guimar%C3%A3es',%20%20middle:%20'Lucas',%20%20first:%20'Andr%C3%A9'%20} [31m500 [90m65ms[0m
+[90mGET /users/new [36m304 [90m29ms[0m
+[90mGET /users/show [31m500 [90m29ms[0m
+[90mGET /users/andrelug [32m200 [90m20ms - 322b[0m
+[90mGET /users/new [36m304 [90m20ms[0m
+[90mPOST /users [36m302 [90m14ms - 82b[0m
+[90mGET /users/glaura [32m200 [90m15ms - 324b[0m
+[90mGET /users/ [32m200 [90m16ms - 353b[0m
+[90mGET /users/ [32m200 [90m13ms - 163b[0m
+[90mGET /users/glaura [36m304 [90m29ms[0m
+[90mGET /users/andrelug [36m304 [90m25ms[0m
+[90mGET /users/ [36m304 [90m12ms[0m
+[90mGET /users/glaura [36m304 [90m19ms[0m
+[90mGET /users/ [32m200 [90m11ms - 163b[0m
+[90mGET /users/ [32m200 [90m21ms - 163b[0m
+[90mGET /users/andrelug [32m200 [90m16ms - 369b[0m
+[90mGET /users/andrelug/edit [31m500 [90m9ms[0m

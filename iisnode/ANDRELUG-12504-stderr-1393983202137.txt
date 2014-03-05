@@ -1,0 +1,19 @@
+TypeError: C:\Users\Andre\Documents\My Web Sites\NQ2\views\users\edit.jade:5
+    3| form(method="post", action="/users/#{user.name.loginName}")
+    4|     p First Name:
+  > 5|         input#firstName(type="text", name="firstName", value="#{users.name.first}")
+    6|     p Middle Name:
+    7|         input#middleName(type="text", name="middleName", value="#{users.name.middle}")
+    8|     p Last Name:
+
+Cannot read property 'name' of undefined
+    at eval (eval at <anonymous> (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\jade.js:162:8), <anonymous>:28:102)
+    at res (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\jade.js:163:38)
+    at Object.exports.render (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\jade.js:259:10)
+    at Object.exports.renderFile (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\jade.js:295:18)
+    at View.exports.renderFile [as engine] (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\jade\lib\jade.js:280:21)
+    at View.render (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\response.js:798:7)
+    at C:\Users\Andre\Documents\My Web Sites\NQ2\server.js:146:8
+    at callbacks (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\router\index.js:164:37)

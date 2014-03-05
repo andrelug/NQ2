@@ -1,0 +1,34 @@
+h1 New User
+
+form(method="post", action="/users")
+    p First Name:
+        input#firstName(type="text", name="firstName")
+    p Middle Name:
+        input#middleName(type="text", name="middleName")
+    p Last Name:
+        input#lastName(type="text", name="lastName")
+    p NickName:
+        input#nickName(type="text", name="nickName")
+    p Login Name:
+        input#loginName(type="text", name="loginName")
+    p Birth Date:
+        input#birthDate(type="date", name="birthDate")
+    p Email:
+        input#email(type="email", name="email")
+    p Gender:
+        input#gender(type="text", name="gender")
+    p Password:
+        input#password(type="password", name="password")
+    p Country:
+        input#country(type="text", name="country")
+    p State:
+        input#state(type="text", name="state")
+    p City:
+        input#city(type="text", name="city")
+    p ZipCode:
+        input#zipcode(type="number", name="zipcode")
+    p Telephone:
+        input#telephone(type="number", name="telephone")
+
+
+    p: button(type="submit") Create

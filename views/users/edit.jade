@@ -1,0 +1,35 @@
+h1 Update User
+
+form(method="post", action="/users/#{user.name.loginName}")
+    input(type="hidden", name="_method", value="put")
+    p First Name:
+        input#firstName(type="text", name="firstName", value="#{user.name.first}")
+    p Middle Name:
+        input#middleName(type="text", name="middleName", value="#{user.name.middle}")
+    p Last Name:
+        input#lastName(type="text", name="lastName", value="#{user.name.last}")
+    p NickName:
+        input#nickName(type="text", name="nickName", value="#{user.name.nickName}")
+    p Login Name:
+        input#loginName(type="text", name="loginName", value="#{user.name.loginName}")
+    p Birth Date:
+        input#birthDate(type="date", name="birthDate", value="#{user.birthDate}")
+    p Email:
+        input#email(type="email", name="email", value="#{user.email}")
+    p Gender:
+        input#gender(type="text", name="gender", value="#{user.gender}")
+    p Password:
+        input#password(type="password", name="password", value="#{user.password}")
+    p Country:
+        input#country(type="text", name="country", value="#{user.localization.country}")
+    p State:
+        input#state(type="text", name="state", value="#{user.localization.state}")
+    p City:
+        input#city(type="text", name="city", value="#{user.localization.city}")
+    p ZipCode:
+        input#zipcode(type="number", name="zipcode", value="#{user.localization.zipcode}")
+    p Telephone:
+        input#telephone(type="number", name="telephone", value="#{user.localization.telephone}")
+
+
+    p: button(type="submit") Update
