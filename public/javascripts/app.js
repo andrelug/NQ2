@@ -125,7 +125,7 @@ male.on('click', function () {
     $('#ageChart').animate({'bottom': offsets.top / 2,'left': offsets.left / 2}, function(){
         $('.input3 h3').html('Right now we have ' + users.male + " other men in our site").fadeIn(800, function () {
             $('.input3 h4').html("and "+ Math.round(users.ageNum * 100 / users.total) + '% of them are also ' + age + ' yrs old').fadeIn(800, function(){
-                $('.canva2a').css('top', '80%').fadeIn(1000).css('dispay', 'block');
+                $('.canva2a').css('top', '82%').fadeIn(1000).css('dispay', 'block');
             });
         });
     });

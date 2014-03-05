@@ -2,15 +2,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 @font-face
 {
     font-family: Nexa-Light;
-    src: url("../fonts/Nexa-Light.otf") format("opentype");
-}
-@font-face
-{
-    font-family: Lato;
-    src: url("../fonts/Lato-Regular.ttf");
+    src: url("../Nexa-Light.otf") format("opentype");
 }
 body, *{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Nexa-Light', sans-serif;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
@@ -129,7 +124,7 @@ input{
 .canva2a, .register{
     position: absolute;
     display: none;
-    left: 42%;
+    left: 67%;
     background-color: rgba(74,77,77,1);
     text-align: center;
     text-decoration: none;
@@ -141,6 +136,7 @@ input{
 .register{
     bottom: -200px;
     display: block !important;
+    left: 42%;
 }
 
 .gender{
