@@ -36,3 +36,6 @@ Express server listening on port \\.\pipe\da285a08-4933-4c90-8386-04bcfe67e5f9
 [90mGET /Nexa-Light.otf [32m200 [90m30ms - 29.3kb[0m
 [90mGET / [32m200 [90m25ms - 2.03kb[0m
 [90mGET /Nexa-Light.otf [32m200 [90m3ms - 29.3kb[0m
+[90mGET / [36m304 [90m27ms[0m
+[90mGET /stylesheets/..fonts/NexaLight.woff [33m404 [90m1ms[0m
+[90mGET / [32m200 [90m32ms - 2.03kb[0m

@@ -2,7 +2,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 @font-face
 {
     font-family: Nexa-Light;
-    src: url("../Nexa-Light.otf") format("opentype");
+    src: url("../fonts/NexaLight.woff");
 }
 body, *{
     font-family: 'Nexa-Light', sans-serif;
