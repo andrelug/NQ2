@@ -1,0 +1,10 @@
+New Relic for Node.js was unable to start due to an error:
+Error: Invalid license key, please contact support@newrelic.com
+    at StreamSink.parser [as callback] (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\newrelic\lib\collector\parse-response.js:81:25)
+    at StreamSink.end (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\newrelic\lib\util\stream-sink.js:41:8)
+    at IncomingMessage.onend (_stream_readable.js:483:10)
+    at IncomingMessage.g (events.js:180:16)
+    at IncomingMessage.EventEmitter.emit (events.js:117:20)
+    at _stream_readable.js:920:16
+    at C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\newrelic\node_modules\continuation-local-storage\node_modules\async-listener\glue.js:177:31
+    at process._tickCallback (node.js:415:13)

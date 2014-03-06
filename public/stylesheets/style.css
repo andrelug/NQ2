@@ -241,3 +241,8 @@ input{
 .linkedin{
     background-color: #B1C9ED;
 }
+.errAge{
+    position: absolute;
+    top: 35%;
+    display: none;
+}

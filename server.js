@@ -26,7 +26,7 @@ var UserSchema = new mongoose.Schema({
         middle: String,
         last: String,
         nickName: String,
-        loginName: String
+        loginName: {type: String, lowercase: true, trim: true, required: true, unique: true, index: true}
     },
     birthDate: Date,
     email: String,
@@ -90,14 +90,8 @@ app.get('/', routes.index);
 
 // All Users
 app.get('/users', function (req, res) {
-    Users.find({}, function (err, docs) {
-        var show = [];
-        for(i=0;i< docs.length; i++){
-            if(docs[i].deleted === false){
-                show.push(docs[i]);
-            }
-        }
-        res.render('users/index', { users: show});
+    Users.find({deleted: false}, function (err, docs) {
+        res.render('users/index', { users: docs});
     });
 });
 
@@ -146,7 +140,11 @@ app.param('loginName', function(req, res, next, loginName){
 
 // Show user
 app.get('/users/:loginName', function(req, res){
-    res.render("users/show", { user: req.loginName});
+    if (req.loginName.deleted === false){
+        res.render("users/show", { user: req.loginName});
+    } else{
+        res.render("users/restore", {user: req.loginName})
+    }
 });
 
 // Edit user
@@ -195,6 +193,19 @@ app.put('/users/:loginName/delete', function(req, res){
         {'name.loginName': req.params.loginName},
         {$set: {
             deleted: true
+        }},
+        function(err){
+            res.redirect('/users')
+        }
+    );
+});
+
+// Restore user
+app.put('/users/:loginName/restore', function(req, res){
+    Users.update(
+        {'name.loginName': req.params.loginName},
+        {$set: {
+            deleted: false
         }},
         function(err){
             res.redirect('/users')

@@ -1,0 +1,51 @@
+Express server listening on port \\.\pipe\d2dc6c94-6984-474d-baee-09a27d74a551
+[90mGET /users/glaura [32m200 [90m300ms - 255b[0m
+[90mGET /users/glaura [32m200 [90m15ms - 255b[0m
+[90mGET /users/glaura [32m200 [90m10ms - 255b[0m
+[90mPUT /users/glaura/restore [36m302 [90m9ms - 68b[0m
+[90mGET /users [32m200 [90m16ms - 163b[0m
+[90mGET /users/andrelug [32m200 [90m24ms - 458b[0m
+[90mPUT /users/andrelug/delete [36m302 [90m6ms - 68b[0m
+[90mGET /users [32m200 [90m17ms - 97b[0m
+[90mGET /users/andrelug [32m200 [90m9ms - 259b[0m
+[90mPUT /users/andrelug/restore [36m302 [90m5ms - 68b[0m
+[90mGET /users [32m200 [90m15ms - 163b[0m
+[90mGET /users [32m200 [90m12ms - 190b[0m
+[90mGET /new [33m404 [90m2ms[0m
+[90mGET /users [32m200 [90m10ms - 196b[0m
+[90mGET /users/new [36m304 [90m20ms[0m
+[90mGET /users/andrelug [32m200 [90m19ms - 492b[0m
+[90mGET /users [36m304 [90m10ms[0m
+[90mGET /users/glaura [32m200 [90m30ms - 553b[0m
+[90mGET /users [36m304 [90m12ms[0m
+[90mGET / [32m200 [90m79ms - 2.03kb[0m
+[90mGET / [32m200 [90m35ms - 2.03kb[0m
+[90mGET / [32m200 [90m32ms - 2.03kb[0m
+[90mGET / [32m200 [90m35ms - 2.03kb[0m
+[90mGET / [32m200 [90m37ms - 2.03kb[0m
+[90mGET / [32m200 [90m30ms - 2.03kb[0m
+[90mGET / [32m200 [90m36ms - 2.03kb[0m
+[90mGET / [32m200 [90m31ms - 2.03kb[0m
+[90mGET / [32m200 [90m41ms - 2.03kb[0m
+[90mGET / [32m200 [90m44ms - 2.03kb[0m
+[90mGET / [32m200 [90m49ms - 2.03kb[0m
+[90mGET / [32m200 [90m29ms - 2.03kb[0m
+[90mGET / [32m200 [90m33ms - 2.03kb[0m
+[90mGET / [32m200 [90m26ms - 2.03kb[0m
+[90mGET / [32m200 [90m45ms - 2.03kb[0m
+[90mGET / [32m200 [90m27ms - 2.03kb[0m
+[90mGET / [32m200 [90m31ms - 2.03kb[0m
+[90mGET / [32m200 [90m28ms - 2.03kb[0m
+[90mGET / [32m200 [90m26ms - 2.03kb[0m
+[90mGET / [32m200 [90m27ms - 2.03kb[0m
+[90mGET / [32m200 [90m36ms - 2.03kb[0m
+[90mGET / [32m200 [90m45ms - 2.03kb[0m
+[90mGET / [32m200 [90m48ms - 2.03kb[0m
+[90mGET / [32m200 [90m28ms - 2.03kb[0m
+[90mGET / [32m200 [90m33ms - 2.03kb[0m
+[90mGET / [32m200 [90m26ms - 2.03kb[0m
+[90mGET / [32m200 [90m33ms - 2.03kb[0m
+[90mGET / [32m200 [90m25ms - 2.03kb[0m
+[90mGET / [32m200 [90m26ms - 2.03kb[0m
+[90mGET / [32m200 [90m33ms - 2.03kb[0m
+[90mGET / [32m200 [90m26ms - 2.03kb[0m

@@ -1,0 +1,7 @@
+h1 Restore Account
+
+h3 Hi #{user.name.loginName}
+p If you want to restore your account, please click the button:
+form(action="/users/#{user.name.loginName}/restore", method="post")
+    input(type="hidden", name="_method", value="put")
+    button(type="submit") Restore

@@ -3,3 +3,5 @@ h1 All Users
 ul
     each user in users
         li: a(href="/users/#{user.name.loginName}") #{user.name.first} (#{user.email})
+
+a(href="/users/new") New user

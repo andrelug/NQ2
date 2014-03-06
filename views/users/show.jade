@@ -19,4 +19,6 @@ ul
     li: a(href="/users/#{user.name.loginName}/edit") Edit
     li
         form(action="/users/#{user.name.loginName}/delete", method="post")
-            input(type="hidden", name="_method", value="update")
+            input(type="hidden", name="_method", value="put")
+            button(type="submit") Delete
+    li: a(href="/users") back
