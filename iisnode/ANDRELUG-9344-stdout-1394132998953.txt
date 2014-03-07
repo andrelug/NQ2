@@ -28,3 +28,12 @@ Express server listening on port \\.\pipe\2f1109b6-736d-411e-9ef6-d76043500d32
 [90mPUT /users/glaura/restore [36m302 [90m3ms - 68b[0m
 [90mGET /users [32m200 [90m7ms - 196b[0m
 [90mGET /users/glaura [32m200 [90m15ms - 553b[0m
+[90mGET /users/ [32m200 [90m16ms - 196b[0m
+[90mGET /users/ [32m200 [90m7ms - 196b[0m
+[90mGET /users/ [32m200 [90m6ms - 196b[0m
+[90mGET /users/ [32m200 [90m8ms - 196b[0m
+[90mGET /users/ [32m200 [90m7ms - 196b[0m
+[90mGET /users/ [32m200 [90m9ms - 196b[0m
+[90mGET /users/ [32m200 [90m8ms - 196b[0m
+[90mGET /users/ [32m200 [90m7ms - 196b[0m
+[90mGET /users/ [36m304 [90m8ms[0m

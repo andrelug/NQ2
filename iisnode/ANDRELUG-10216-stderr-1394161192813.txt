@@ -1,0 +1,12 @@
+Application has thrown an uncaught exception and is terminated:
+TypeError: Cannot read property 'name' of undefined
+    at C:\Users\Andre\Documents\My Web Sites\NQ2\server.js:136:37
+    at handleError (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\hooks\hooks.js:92:18)
+    at _next (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\hooks\hooks.js:34:22)
+    at fnWrapper (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\hooks\hooks.js:159:8)
+    at complete (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\lib\document.js:974:5)
+    at C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\lib\document.js:965:20
+    at ObjectId.SchemaType.doValidate (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\lib\schematype.js:603:22)
+    at C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\lib\document.js:956:9
+    at C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\newrelic\node_modules\continuation-local-storage\node_modules\async-listener\glue.js:177:31
+    at process._tickCallback (node.js:415:13)
