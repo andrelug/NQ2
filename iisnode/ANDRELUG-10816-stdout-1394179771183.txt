@@ -1,0 +1,3 @@
+Express server listening on port \\.\pipe\ef643c25-c7f2-4033-b6ad-b3907b3f5039
+[90mGET / [32m200 [90m324ms - 2.08kb[0m
+[90mGET /n?{%22aname%22:%22andre%22} [32m200 [90m2ms[0m

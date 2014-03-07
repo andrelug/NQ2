@@ -1,0 +1,3 @@
+Express server listening on port \\.\pipe\2e61ff9a-3158-476e-a735-2c4b35bc8dd3
+[90mGET / [32m200 [90m309ms - 2.08kb[0m
+[90mGET /name?name=sfajdkl [32m200 [90m3ms[0m

@@ -1,0 +1,8 @@
+Express server listening on port \\.\pipe\dbdea14e-6c3b-410d-94ad-1c6d658ea9d7
+[90mGET / [32m200 [90m328ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22adnre%22} [32m200 [90m6ms[0m
+[90mGET / [32m200 [90m56ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22andre%22} [32m200 [90m2ms[0m
+[90mGET / [32m200 [90m54ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22Andre%22} [32m200 [90m3ms[0m
+[90mGET / [32m200 [90m49ms - 2.08kb[0m

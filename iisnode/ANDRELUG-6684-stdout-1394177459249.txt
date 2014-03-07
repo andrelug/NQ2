@@ -1,0 +1,26 @@
+Express server listening on port \\.\pipe\b634a683-1b1c-423a-9d6b-7013ca6314f6
+[90mGET / [32m200 [90m329ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22Andr%C3%A9%22} [32m200 [90m6ms[0m
+[90mGET /a/25 [32m200 [90m4ms - 17b[0m
+[90mGET / [32m200 [90m41ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22andre%C3%A9%22} [32m200 [90m1ms[0m
+[90mGET /a/25 [36m304 [90m3ms[0m
+[90mGET / [32m200 [90m32ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22andre%22} [32m200 [90m4ms[0m
+[90mGET /a/25 [32m200 [90m2ms - 59b[0m
+[90mGET / [32m200 [90m52ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22Andr%C3%A9%22} [32m200 [90m2ms[0m
+[90mGET / [32m200 [90m40ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22Andr%C3%A9%22} [32m200 [90m4ms[0m
+[90mGET / [32m200 [90m32ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22andre%22} [32m200 [90m4ms[0m
+[90mGET / [32m200 [90m31ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22andaf%22} [32m200 [90m1ms[0m
+[90mGET / [32m200 [90m25ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22andf%22} [32m200 [90m1ms[0m
+[90mGET / [32m200 [90m33ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22adsfl%22} [32m200 [90m2ms[0m
+[90mGET / [32m200 [90m26ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22Andr%C3%A9%22} [32m200 [90m2ms[0m
+[90mGET / [32m200 [90m32ms - 2.08kb[0m
+[90mGET /n?{%22name%22:%22asdl%22} [32m200 [90m1ms[0m

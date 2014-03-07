@@ -1,0 +1,48 @@
+Express server listening on port \\.\pipe\00c6a55e-5eb7-4136-a9de-4aa65657573f
+[90mGET / [32m200 [90m331ms - 2.08kb[0m
+[90mGET /name?name=Andr%C3%A9 [32m200 [90m9ms[0m
+[90mGET /a/25 [32m200 [90m3ms[0m
+[90mGET /a/25 [32m200 [90m2ms[0m
+[90mGET / [32m200 [90m52ms - 2.08kb[0m
+[90mGET /name?name=Andr%C3%A9 [32m200 [90m2ms[0m
+[90mGET /a/25 [32m200 [90m2ms[0m
+[90mGET /test/25 [36m304 [90m3ms[0m
+[90mGET / [32m200 [90m60ms - 2.08kb[0m
+[90mGET /name?name=Andr%C3%A9 [32m200 [90m2ms[0m
+[90mGET /a/25 [32m200 [90m2ms[0m
+[90mGET / [32m200 [90m45ms - 2.08kb[0m
+[90mGET /name?name=Andr%C3%A9 [32m200 [90m2ms[0m
+[90mGET /a/25 [32m200 [90m3ms[0m
+[90mGET / [32m200 [90m31ms - 2.08kb[0m
+[90mGET /name?name=Amanda [32m200 [90m3ms[0m
+[90mGET /a/23 [32m200 [90m3ms[0m
+[90mGET /users [36m304 [90m26ms[0m
+[90mGET /users/amanda [36m304 [90m63ms[0m
+[90mGET /users/amanda/edit [32m200 [90m42ms - 1.37kb[0m
+[90mPUT /users/amanda [36m302 [90m264ms - 82b[0m
+[90mGET /users/amanda [32m200 [90m22ms - 495b[0m
+[90mPUT /users/amanda/delete [36m302 [90m5ms - 68b[0m
+[90mGET /users [32m200 [90m20ms - 196b[0m
+[90mGET /amanda [33m404 [90m2ms[0m
+[90mGET /users/amanda [32m200 [90m38ms - 255b[0m
+[90mPUT /users/amanda/restore [36m302 [90m5ms - 68b[0m
+[90mGET /users [32m200 [90m12ms - 270b[0m
+[90mGET /users/amanda [32m200 [90m23ms - 495b[0m
+[90mGET /users [36m304 [90m13ms[0m
+[90mGET /test/25 [36m304 [90m2ms[0m
+[90mGET /test/23 [32m200 [90m2ms - 59b[0m
+[90mGET /test/25 [36m304 [90m4ms[0m
+[90mGET /test/24 [32m200 [90m2ms - 59b[0m
+[90mGET /test/22 [36m304 [90m2ms[0m
+[90mGET /test/23 [36m304 [90m4ms[0m
+[90mGET /test/23 [36m304 [90m2ms[0m
+[90mGET /test/55 [36m304 [90m3ms[0m
+[90mGET /users [36m304 [90m13ms[0m
+[90mGET /users/amanda [36m304 [90m20ms[0m
+[90mGET /users/amanda/edit [32m200 [90m53ms - 1.34kb[0m
+[90mPUT /users/amanda [36m302 [90m115ms - 82b[0m
+[90mGET /users/amanda [32m200 [90m29ms - 553b[0m
+[90mGET /test/23 [32m200 [90m3ms - 59b[0m
+[90mGET / [36m304 [90m64ms[0m
+[90mGET /name?name=Glaura [32m200 [90m4ms[0m
+[90mGET /a/25 [32m200 [90m3ms[0m

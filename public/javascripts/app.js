@@ -4,28 +4,11 @@ var offsets = $('.bottom').offset(),  // get the client's window size
     submiAge = $('.submitsAge'),
     appe = $('.appended'),
     name,
+    sname,
     age,
     male = $('.male'),
     female = $('.female'),
-    users = { total: 7580, male: 4343, female: 3242, ageNum: 322 },  // Get the information from the server about the users and age selected
-    data = [                          // Dounut chart info
-        {value: 4, color: "#F7464A"},
-        {value: 96, color: "#4D5360"}
-    ],
-    ctx = $("#chart").get(0).getContext("2d"),
-    theChart = new Chart(ctx).Doughnut(data),      // Initialize Dounut chart
-    ageData = [          // Age chart data
-	    {
-	        value: 4343,
-	        color: "#36B9B2"
-	    },
-	    {
-	        value: 3242,
-	        color: "#EBA087"
-	    }
-    ],
-    ageCtx = $("#ageChart").get(0).getContext("2d"),
-    ageChart = new Chart(ageCtx).Pie(ageData);          // Initialize age chart
+    users;  // Get the information from the server about the users and age selected
 
 // Define the area of each step
 $('.area').css('width', offsets.left).css('height', offsets.top);
@@ -39,12 +22,29 @@ $('.pass').on('dblclick', function () {
 // Step Functions
 
 var step1 = function () {
+    $.ajax({
+        url: "/name",
+        type: "get",
+        data: { name: name },
+        contentType: 'application/json',
+        success: function (data) {
+            console.log(data);
+            sname = $.parseJSON(data);
+            var data = [                          // Dounut chart info
+                {value: sname.name, color: "#F7464A"},
+                {value: sname.total, color: "#4D5360"}
+            ],
+            ctx = $("#chart").get(0).getContext("2d"),
+            theChart = new Chart(ctx).Doughnut(data);      // Initialize Dounut chart
+        }
+    });
+    
     $('.login').slideDown();
     $('.input1').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
         $('.input2').find('h3').fadeIn(1500, function () {
             $('.input2 h3').find('span').delay(500).fadeIn(500, function () {
                 $('#chart').animate({ 'left': -300 }, 500, 'swing', function () {
-                    $('.canva1p').show().html('4% of our users are called ' + name).animate({ 'top': 185 }, 400, function () {
+                    $('.canva1p').show().html(Math.round(sname.name * 100 / sname.total) + ' % of our users are called ' + name).animate({ 'top': 185 }, 400, function () {
                         $('.canva1a').css('top', 110).fadeIn(1000).css('dispay', 'block');
                     });
                 });
@@ -57,12 +57,28 @@ var step2 = function () {
     $('.input2').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
         $.ajax({
             url: "/a/" + age,
-            type: "put",
+            type: "get",
             success: function (data) {
-                users = data;
+                console.log(data);
+                users = $.parseJSON(data);
+                var ageData = [          // Age chart data
+	                {
+	                    value: users.male,
+	                    color: "#36B9B2"
+	                },
+	                {
+	                    value: users.female,
+	                    color: "#EBA087"
+	                }
+                ],
+                ageCtx = $("#ageChart").get(0).getContext("2d"),
+                ageChart = new Chart(ageCtx).Pie(ageData);          // Initialize age chart
             }
         });
+        
         $('.gender').fadeIn(500);
+
+        
     });
 }
 
@@ -149,11 +165,11 @@ $('.canva1a').on('click', function () {
 
 // Creates functionality for both male and female click functions and proceeds to next step
 male.on('click', function () {
-    appe.html(name + ', male, ' + +age + ' yrs');
+    appe.html(name + ', male, ' + age + ' yrs');
     female.addClass('grayed');
     $('#ageChart').animate({'bottom': offsets.top / 2,'left': offsets.left / 2}, function(){
         $('.input3').find('h3').html('Right now we have ' + users.male + " other men in our site").fadeIn(800, function () {
-            $('.input3').find('h4').html("and "+ Math.round(users.ageNum * 100 / users.total) + '% of them are also ' + age + ' yrs old').fadeIn(800, function(){
+            $('.input3').find('h4').html("and " + Math.round(users.ageNum * 100 / users.total) + '% of our users are also ' + age + ' yrs old').fadeIn(800, function(){
                 $('.canva2a').css('top', '82%').fadeIn(1000).css('dispay', 'block');
             });
         });
@@ -164,7 +180,7 @@ female.on('click', function () {
     male.addClass('grayed');
     $('#ageChart').animate({ 'bottom': offsets.top / 2, 'left': offsets.left / 2 }, function () {
         $('.input3').find('h3').html('Right now we have ' + users.female + " other women in our site").fadeIn(800, function () {
-            $('.input3').find('h4').html("and "+ Math.round(users.ageNum * 100 / users.total) + '% of them are also ' + age + ' yrs old').fadeIn(800, function(){
+            $('.input3').find('h4').html("and "+ Math.round(users.ageNum * 100 / users.total) + '% of our users are also ' + age + ' yrs old').fadeIn(800, function(){
                 $('.canva2a').css('top', '80%').fadeIn(1000).css('dispay', 'block');
             });
         });

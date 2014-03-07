@@ -1,0 +1,12 @@
+Application has thrown an uncaught exception and is terminated:
+ReferenceError: total is not defined
+    at Promise.<anonymous> (C:\Users\Andre\Documents\My Web Sites\NQ2\server.js:286:32)
+    at Promise.<anonymous> (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\mpromise\lib\promise.js:177:8)
+    at Promise.EventEmitter.emit (events.js:95:17)
+    at Promise.emit (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\mpromise\lib\promise.js:84:38)
+    at Promise.fulfill (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\mpromise\lib\promise.js:97:20)
+    at C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\lib\query.js:1052:26
+    at model.Document.init (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\lib\document.js:250:11)
+    at completeMany (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\lib\query.js:1050:12)
+    at Object.cb (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\lib\query.js:1017:11)
+    at Object.<anonymous> (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\mquery\lib\utils.js:134:16)

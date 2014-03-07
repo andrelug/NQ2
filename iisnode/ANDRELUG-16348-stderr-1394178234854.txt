@@ -1,0 +1,12 @@
+Application has thrown an uncaught exception and is terminated:
+TypeError: first argument must be a string or Buffer
+    at ServerResponse.OutgoingMessage.write (http.js:853:11)
+    at ServerResponse.OutgoingMessage.end (http.js:983:16)
+    at Promise.<anonymous> (C:\Users\Andre\Documents\My Web Sites\NQ2\server.js:277:13)
+    at Promise.<anonymous> (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\mpromise\lib\promise.js:177:8)
+    at Promise.EventEmitter.emit (events.js:95:17)
+    at Promise.emit (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\mpromise\lib\promise.js:84:38)
+    at Promise.fulfill (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\mpromise\lib\promise.js:97:20)
+    at Object.cb (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\lib\query.js:1011:22)
+    at Object.<anonymous> (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\mquery\lib\utils.js:134:16)
+    at Object._onImmediate (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\newrelic\node_modules\continuation-local-storage\node_modules\async-listener\glue.js:177:31)

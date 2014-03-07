@@ -3,7 +3,7 @@ var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path')
-  , cronJob = require('cron').CronJob
+  , schedule = require('node-schedule')
   , mongoose = require('mongoose');
 
 var app = express();
@@ -70,6 +70,9 @@ var UserSchema = new mongoose.Schema({
             email: String,
             url: String,
             likes: [String]
+        },
+        twitter:{
+            url: String
         }
     },
     deleted: {type: Boolean, default: false}
@@ -93,7 +96,8 @@ app.configure(function(){
 var total,
     male,
     female;
-var job = new cronJob('00 00 03 * * *', function(){
+
+var j = schedule.scheduleJob('00 * * * *', function(){
     Users.count({}, function(err, docs){
         total = docs;
     });
@@ -103,11 +107,8 @@ var job = new cronJob('00 00 03 * * *', function(){
     Users.count({gender: "female"}, function(err, docs){
         female = docs;
     });
-  },
-  null,
-  true,
-  timeZone "America/Los_Angeles"
-);
+});
+
 
 app.configure('development', function(){
   app.use(express.errorHandler());
@@ -259,31 +260,38 @@ app.get('/test/:age', function(req, res){
     var ano = dateCal + 365.25;
     start.setDate(start.getDate()-ano);
 
-    Users.find({birthDate: {$gte: start, $lte: myDate}},{birthDate: 1, gender: 1, _id: 0}, function(err, docs){
+    Users.find({birthDate: {$gte: start, $lte: myDate}},{birthDate: 1, _id: 0}, function(err, docs){
 
-        Users.count(function(err, size){
-            docs.gender
-            var sendAge = { total: size, male: docs.gender};
-        });
-        
+        var sendAge = { total: total, male: male, female: female, ageNum: docs.length};
 
-        
-        //res.send(docs.length);
+        res.send(sendAge);
+
+    });
+});
+
+// Get ajax name
+app.get("/name", function(req, res){
+    Users.find({'name.first': req.query.name}, {'name.first': 1, _id: 0}, function(err, docs){
+        var sendName = {total: total, name: docs.length};
+        res.end(JSON.stringify(sendName));
     });
 });
 
 // Get ajax age
 app.get('/a/:age', function(req, res){
     var myDate = new Date();
-    var dateCal = req.params.age * 365.25 ;
+    var dateCal = req.params.age * 365.25;
     myDate.setDate(myDate.getDate()-dateCal);
-    var start = new Date(myDate.setDate(myDate.getDate()-365.25));
+    var start = new Date();
+    var ano = dateCal + 365.25;
+    start.setDate(start.getDate()-ano);
 
-    Users.find({birthDate: {$gte: start, $lte: myDate}},{birthDate: 1, gender: 1, _id: 0}, function(err, docs){
-        var sendAge = getAge(docs[2].birthDate);
+    Users.find({birthDate: {$gte: start, $lte: myDate}},{birthDate: 1, _id: 0}, function(err, docs){
 
-        
-        res.send("<h1>" + myDate + "</h1>");
+        var sendAge = { total: total, male: male, female: female, ageNum: docs.length};
+
+        res.end(JSON.stringify(sendAge));
+
     });
 });
 

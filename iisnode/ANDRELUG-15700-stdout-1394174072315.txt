@@ -1,0 +1,15 @@
+You specified a Timezone but have not included the `time` module. Timezone functionality is disabled. Please install the `time` module to use Timezones in your application.
+Express server listening on port \\.\pipe\79973198-51eb-431f-92fe-ac3496de8c7c
+[90mGET /users [32m200 [90m298ms - 60b[0m
+[90mGET /users/new [36m304 [90m30ms[0m
+[90mPOST /users [36m302 [90m14ms - 86b[0m
+[90mGET /users/andrelug [32m200 [90m32ms - 557b[0m
+[90mGET /users [32m200 [90m10ms - 126b[0m
+[90mGET /users/new [36m304 [90m17ms[0m
+[90mPOST /users [36m302 [90m5ms - 82b[0m
+[90mGET /users/amanda [32m200 [90m31ms - 543b[0m
+[90mGET /users [32m200 [90m13ms - 200b[0m
+[90mGET /users/new [36m304 [90m24ms[0m
+[90mPOST /users [36m302 [90m5ms - 82b[0m
+[90mGET /users/glaura [32m200 [90m28ms - 550b[0m
+[90mGET /users [32m200 [90m13ms - 270b[0m
