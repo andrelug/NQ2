@@ -7,7 +7,13 @@ var express = require('express')
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/normalquestions');
+if ('development' == app.get('env')) {
+  var connectionString = 'mongodb://localhost/normalquestions'
+}else{
+  var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI
+}
+
+mongoose.connect(connectionString);
 
 var QuestionSchema = new mongoose.Schema({
     question: String,

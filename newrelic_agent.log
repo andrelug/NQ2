@@ -1715,3 +1715,60 @@
 {"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/index/Rendering for transaction 1344.","time":"2014-03-06T19:16:58.645Z","v":0}
 {"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view index.","time":"2014-03-06T19:17:22.152Z","v":0}
 {"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/index/Rendering for transaction 1345.","time":"2014-03-06T19:17:22.187Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view index.","time":"2014-03-06T19:22:21.050Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/index/Rendering for transaction 1346.","time":"2014-03-06T19:22:21.097Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view index.","time":"2014-03-06T22:52:40.009Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/index/Rendering for transaction 1347.","time":"2014-03-06T22:52:40.051Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view index.","time":"2014-03-06T22:52:42.730Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/index/Rendering for transaction 1348.","time":"2014-03-06T22:52:42.782Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view index.","time":"2014-03-06T22:55:12.956Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/index/Rendering for transaction 1349.","time":"2014-03-06T22:55:12.993Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view index.","time":"2014-03-06T22:55:22.329Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/index/Rendering for transaction 1350.","time":"2014-03-06T22:55:22.388Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view index.","time":"2014-03-06T22:55:32.949Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/index/Rendering for transaction 1351.","time":"2014-03-06T22:55:33.011Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"deleted\":false}).","time":"2014-03-06T22:55:51.559Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/index.","time":"2014-03-06T22:55:51.683Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/index/Rendering for transaction 1352.","time":"2014-03-06T22:55:51.704Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"name.loginName\":\"glaura\"}).","time":"2014-03-06T22:56:19.906Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/show.","time":"2014-03-06T22:56:20.135Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/show/Rendering for transaction 1353.","time":"2014-03-06T22:56:20.179Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"name.loginName\":\"glaura\"}).","time":"2014-03-06T22:56:22.238Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.update({\"name.loginName\":\"glaura\"}).","time":"2014-03-06T22:56:22.241Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.update({\"name.loginName\":\"glaura\"}) ended for transaction 1354.","time":"2014-03-06T22:56:22.304Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"deleted\":false}).","time":"2014-03-06T22:56:22.310Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/index.","time":"2014-03-06T22:56:22.311Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/index/Rendering for transaction 1355.","time":"2014-03-06T22:56:22.324Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"name.loginName\":\"glaura\"}).","time":"2014-03-06T22:56:30.666Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/restore.","time":"2014-03-06T22:56:30.670Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/restore/Rendering for transaction 1356.","time":"2014-03-06T22:56:30.679Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"name.loginName\":\"glaura\"}).","time":"2014-03-06T22:56:34.563Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.update({\"name.loginName\":\"glaura\"}).","time":"2014-03-06T22:56:34.566Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.update({\"name.loginName\":\"glaura\"}) ended for transaction 1357.","time":"2014-03-06T22:56:34.568Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"deleted\":false}).","time":"2014-03-06T22:56:34.572Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/index.","time":"2014-03-06T22:56:34.574Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/index/Rendering for transaction 1358.","time":"2014-03-06T22:56:34.586Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"name.loginName\":\"glaura\"}).","time":"2014-03-06T22:56:36.286Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/show.","time":"2014-03-06T22:56:36.289Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/show/Rendering for transaction 1359.","time":"2014-03-06T22:56:36.311Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"name.loginName\":\"glaura\"}).","time":"2014-03-07T02:38:01.623Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/show.","time":"2014-03-07T02:38:02.160Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/show/Rendering for transaction 1360.","time":"2014-03-07T02:38:02.177Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"name.loginName\":\"glaura\"}).","time":"2014-03-07T02:39:21.430Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.update({\"name.loginName\":\"glaura\"}).","time":"2014-03-07T02:39:21.432Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.update({\"name.loginName\":\"glaura\"}) ended for transaction 1361.","time":"2014-03-07T02:39:21.433Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"deleted\":false}).","time":"2014-03-07T02:39:21.437Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/index.","time":"2014-03-07T02:39:21.438Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/index/Rendering for transaction 1362.","time":"2014-03-07T02:39:21.446Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"name.loginName\":\"glaura\"}).","time":"2014-03-07T02:39:26.136Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/restore.","time":"2014-03-07T02:39:26.137Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/restore/Rendering for transaction 1363.","time":"2014-03-07T02:39:26.144Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"name.loginName\":\"glaura\"}).","time":"2014-03-07T02:39:32.725Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.update({\"name.loginName\":\"glaura\"}).","time":"2014-03-07T02:39:32.726Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.update({\"name.loginName\":\"glaura\"}) ended for transaction 1364.","time":"2014-03-07T02:39:32.727Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"deleted\":false}).","time":"2014-03-07T02:39:32.731Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/index.","time":"2014-03-07T02:39:32.732Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/index/Rendering for transaction 1365.","time":"2014-03-07T02:39:32.761Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"mongodb","level":10,"msg":"Tracing MongoDB users.find({\"name.loginName\":\"glaura\"}).","time":"2014-03-07T02:39:34.101Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendering Express 3 view users/show.","time":"2014-03-07T02:39:34.102Z","v":0}
+{"name":"newrelic","hostname":"Andrelug","pid":9344,"component":"express","level":10,"msg":"Rendered Express 3 view with metric View/users/show/Rendering for transaction 1366.","time":"2014-03-07T02:39:34.118Z","v":0}

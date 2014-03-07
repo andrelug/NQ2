@@ -77,7 +77,7 @@ $('.appender').on('keyup', function (event) {
     appe.html(name); // append the value to the top bar
     $('.appended2').html(name);  // append the value to the greeting step2
 
-    // Deals with the submit button
+    // Deals with the submit button with validation keyCodes
     if (event.keyCode >= 48 && event.keyCode <= 90) {
         submi.fadeIn().css('display', 'block');
     }
@@ -96,8 +96,9 @@ $('.appender').on('keyup', function (event) {
 
 // Age input functionality
 $('.appenderAge input').on('keyup', function (event) {
-
+    // Validate input keys with Enter
     if (event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 8 || event.keyCode == 13) {
+        // Validate without enter
         if (event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 8) {
             age = $(this).val(); // Get the value typed
             age = age.substring(0, 2);
