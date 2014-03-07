@@ -3,6 +3,7 @@ var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path')
+  , cronJob = require('cron').CronJob
   , mongoose = require('mongoose');
 
 var app = express();
@@ -87,6 +88,26 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
+
+// Cron jobs
+var total,
+    male,
+    female;
+var job = new cronJob('00 00 03 * * *', function(){
+    Users.count({}, function(err, docs){
+        total = docs;
+    });
+    Users.count({gender: "male"}, function(err, docs){
+        male = docs;
+    });
+    Users.count({gender: "female"}, function(err, docs){
+        female = docs;
+    });
+  },
+  null,
+  true,
+  timeZone "America/Los_Angeles"
+);
 
 app.configure('development', function(){
   app.use(express.errorHandler());
@@ -217,6 +238,53 @@ app.put('/users/:loginName/restore', function(req, res){
             res.redirect('/users')
         }
     );
+});
+
+function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
+app.get('/test/:age', function(req, res){
+    var myDate = new Date();
+    var dateCal = req.params.age * 365.25;
+    myDate.setDate(myDate.getDate()-dateCal);
+    var start = new Date();
+    var ano = dateCal + 365.25;
+    start.setDate(start.getDate()-ano);
+
+    Users.find({birthDate: {$gte: start, $lte: myDate}},{birthDate: 1, gender: 1, _id: 0}, function(err, docs){
+
+        Users.count(function(err, size){
+            docs.gender
+            var sendAge = { total: size, male: docs.gender};
+        });
+        
+
+        
+        //res.send(docs.length);
+    });
+});
+
+// Get ajax age
+app.get('/a/:age', function(req, res){
+    var myDate = new Date();
+    var dateCal = req.params.age * 365.25 ;
+    myDate.setDate(myDate.getDate()-dateCal);
+    var start = new Date(myDate.setDate(myDate.getDate()-365.25));
+
+    Users.find({birthDate: {$gte: start, $lte: myDate}},{birthDate: 1, gender: 1, _id: 0}, function(err, docs){
+        var sendAge = getAge(docs[2].birthDate);
+
+        
+        res.send("<h1>" + myDate + "</h1>");
+    });
 });
 
 http.createServer(app).listen(app.get('port'), function(){

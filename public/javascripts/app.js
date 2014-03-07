@@ -53,8 +53,15 @@ var step1 = function () {
     });
 }
 
-var step2 = function(){
-    $('.input2').animate({'margin-top': -offsets.top}, 1000, 'swing', function(){
+var step2 = function () {
+    $('.input2').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
+        $.ajax({
+            url: "/a/" + age,
+            type: "put",
+            success: function (data) {
+                users = data;
+            }
+        });
         $('.gender').fadeIn(500);
     });
 }

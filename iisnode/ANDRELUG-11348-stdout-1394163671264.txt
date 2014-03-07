@@ -1,3 +1,5 @@
 Express server listening on port \\.\pipe\44c98a21-a1c7-4b60-bfff-254189cedcdd
 [90mGET / [32m200 [90m332ms - 2.08kb[0m
 [90mGET / [32m200 [90m38ms - 2.08kb[0m
+[90mGET /users/glaura [36m304 [90m60ms[0m
+[90mGET /users [32m200 [90m14ms - 271b[0m
