@@ -13,13 +13,7 @@ var offsets = $('.bottom').offset(),  // get the client's window size
 
 // Define the area of each step
 $('.area').css('width', offsets.left).css('height', offsets.top);
-// Creates the functionality for the login tab
-$('.pass').on('click', function () {
-    $(this).animate({ 'left': 10 });
-});
-$('.pass').on('dblclick', function () {
-    $(this).animate({ 'left': -200 });
-});
+
 // Step Functions
 
 var step1 = function () {
