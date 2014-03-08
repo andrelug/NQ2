@@ -228,6 +228,7 @@ input{
 }
 .input5 input{
     margin-left: 10px;
+    width: 150px;
 }
 .input5 ul{
     margin-top: 30px;
@@ -244,5 +245,8 @@ input{
 .errAge{
     position: absolute;
     top: 35%;
+    display: none;
+}
+//#gender{
     display: none;
 }

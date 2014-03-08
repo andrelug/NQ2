@@ -4,6 +4,7 @@ var offsets = $('.bottom').offset(),  // get the client's window size
     submiAge = $('.submitsAge'),
     appe = $('.appended'),
     name,
+    gender,
     sname,
     age,
     male = $('.male'),
@@ -165,6 +166,7 @@ $('.canva1a').on('click', function () {
 
 // Creates functionality for both male and female click functions and proceeds to next step
 male.on('click', function () {
+    gender = "male";
     appe.html(name + ', male, ' + age + ' yrs');
     female.addClass('grayed');
     $('#ageChart').animate({'bottom': offsets.top / 2,'left': offsets.left / 2}, function(){
@@ -176,11 +178,12 @@ male.on('click', function () {
     });
 });
 female.on('click', function () {
+    gender = "female";
     appe.html(name + ', female, ' + +age + ' yrs');
     male.addClass('grayed');
     $('#ageChart').animate({ 'bottom': offsets.top / 2, 'left': offsets.left / 2 }, function () {
         $('.input3').find('h3').html('Right now we have ' + users.female + " other women in our site").fadeIn(800, function () {
-            $('.input3').find('h4').html("and "+ Math.round(users.ageNum * 100 / users.total) + '% of our users are also ' + age + ' yrs old').fadeIn(800, function(){
+            $('.input3').find('h4').html("and " + Math.round(users.ageNum * 100 / users.total) + '% of our users are also ' + age + ' yrs old').fadeIn(800, function () {
                 $('.canva2a').css('top', '80%').fadeIn(1000).css('dispay', 'block');
             });
         });
@@ -192,5 +195,7 @@ $('.canva2a').on('click', function () {
 });
 // Show register modal
 $('.register').on('click', function () {
+    $('#fname').val(name);
+    $('#gender').val(gender);
     $('.input5').show(600);
 });

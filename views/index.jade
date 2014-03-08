@@ -53,12 +53,16 @@ block content
             div.input5.area
                 h1 Welcome to Normal Questions
 
-                form
-                    input(type="text", placeholder="First Name")
+                form(method="post", action="/newUser")
+                    input#fname(type="text", name="firstName", placeholder="First Name")
 
-                    input(type="text", placeholder="Last Name")
+                    input#gender(type="hidden", name="gender")
 
-                    input(type="password", placeholder="Password")
+                    input(type="text", name="loginName", placeholder="Login Name")
+
+                    input(type="text", name="email", placeholder="Email")
+
+                    input(type="password", name="password", placeholder="Password")
 
                     input.submit(type="submit", value="Register")
 

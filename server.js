@@ -295,6 +295,26 @@ app.get('/a/:age', function(req, res){
     });
 });
 
+
+// New User Landing Page
+app.post("/newUser", function(req, res){
+    var b = req.body;
+    new Users({
+        name: {
+            first: b.firstName,
+            loginName: b.loginName
+        },
+        email: b.email,
+        gender: b.gender,
+        password: {
+            main: b.password
+        }
+    }).save(function(err, docs){
+       if(err) res.json(err);
+       res.redirect('/users/' + docs.name.loginName); 
+    });
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
