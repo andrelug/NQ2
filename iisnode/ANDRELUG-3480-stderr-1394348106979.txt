@@ -1,0 +1,3 @@
+Error: ENOENT, open 'C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\node_modules\connect\node_modules\public\favicon.ico'
+Error: ENOENT, open 'C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\node_modules\connect\node_modules\public\favicon.ico'
+Error: ENOENT, open 'C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\node_modules\connect\node_modules\public\favicon.ico'

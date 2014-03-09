@@ -1,0 +1,11 @@
+Error: Failed to lookup view "users/profile" in views directory "C:\Users\Andre\Documents\My Web Sites\NQ2/views"
+    at Function.app.render (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\response.js:798:7)
+    at ServerResponse.render (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\newrelic\lib\instrumentation\express.js:105:21)
+    at C:\Users\Andre\Documents\My Web Sites\NQ2\app\routes.js:99:13
+    at callbacks (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\router\index.js:164:37)
+    at isLoggedIn (C:\Users\Andre\Documents\My Web Sites\NQ2\app\routes.js:286:10)
+    at callbacks (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\router\index.js:164:37)
+    at param (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\router\index.js:138:11)
+    at pass (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\router\index.js:145:5)
+    at Router._dispatch (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\lib\router\index.js:173:5)

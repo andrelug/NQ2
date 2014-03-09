@@ -191,5 +191,5 @@ $('.canva2a').on('click', function () {
 $('.register').on('click', function () {
     $('#fname').val(name);
     $('#gender').val(gender);
-    $('.input5').show(600);
+    $('.input5').slideDown(600);
 });

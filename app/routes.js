@@ -59,36 +59,30 @@ module.exports = function (app, passport, mongoose) {
 
     // =====================================
     // USER SIGNUP =========================
-    // =====================================
+    // ===================================== I should later find a way to pass params to the jade file here and put values on the inputs
     app.post('/newUser', passport.authenticate('local-signup', {
         successRedirect: '/users', // redirect to the secure profile section
         failureRedirect: '/signup', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages     
     }));
-    /*  app.post("/newUser", function (req, res) {
-    var b = req.body;
-    new Users({
-    name: {
-    first: b.firstName,
-    loginName: b.loginName
-    },
-    email: b.email,
-    gender: b.gender,
-    password: {
-    main: b.password
-    }
-    }).save(function (err, docs) {
-    if (err) res.json(err);
-    res.redirect('/users/' + docs.name.loginName);
-    });
-    }); */
 
     // =====================================
     // LOG IN ==============================
     // =====================================
     app.get('/login', function (req, res) {
         res.render("login", { message: req.flash('loginMessage') });
+            if (req.url === '/favicon.ico') {
+                r.writeHead(200, {'Content-Type': 'image/x-icon'} );
+                return r.end();
+            }
     });
+
+
+    app.post('/login', passport.authenticate('local-login', {
+		successRedirect : '/users', // redirect to the secure profile section
+		failureRedirect : '/login', // redirect back to the signup page if there is an error
+		failureFlash : true // allow flash messages
+	}));
 
     // =====================================
     // SIGN UP  ============================
@@ -97,22 +91,13 @@ module.exports = function (app, passport, mongoose) {
         res.render("signup", { message: req.flash('signupMessage') });
     });
 
-
-    // =====================================
-    // PROFILE PAGE ========================
-    // =====================================
-    app.get('/profile', isLoggedIn, function (req, res) {
-        res.render('users/profile', {
-            user: req.user // get the user out of session and pass to template
-        });
-    });
-
     // =====================================
     // ALL USERS ===========================
     // =====================================
     app.get('/users', isLoggedIn, function (req, res) {
+        var user = req.user;
         Users.find({ deleted: false }, function (err, docs) {
-            res.render('users/index', { users: docs });
+            res.render('users/index', { users: docs, user: user });
         });
     });
 
