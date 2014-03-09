@@ -1,3 +1,0 @@
-Express server listening on port \\.\pipe\5ae10507-5162-4917-8008-2af352ac8efa
-[90mGET / [32m200 [90m333ms - 2.33kb[0m
-[90mGET / [32m200 [90m27ms - 2.33kb[0m

@@ -1,4 +1,0 @@
-New Relic for Node.js was unable to start due to an error:
-Error: connect ETIMEDOUT
-    at errnoException (net.js:901:11)
-    at Object.afterConnect [as oncomplete] (net.js:892:19)

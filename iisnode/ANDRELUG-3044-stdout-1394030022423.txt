@@ -1,7 +1,0 @@
-Express server listening on port \\.\pipe\f2252ebd-7aa8-4573-ac22-60ed1847c2aa
-[90mGET /users/ [32m200 [90m273ms - 93b[0m
-[90mGET /users/ [32m200 [90m17ms - 93b[0m
-[90mGET /users/new [36m304 [90m41ms[0m
-[90mPOST /users [36m302 [90m14ms - 82b[0m
-[90mGET /users/glaura [32m200 [90m37ms - 367b[0m
-[90mGET /users/ [32m200 [90m9ms - 163b[0m

@@ -1,3 +1,0 @@
-Express server listening on port \\.\pipe\5c3e6d0b-8cf4-45b7-a206-eb283eb4e007
-[90mGET / [32m200 [90m295ms - 813b[0m
-[90mGET /javascripts/jquery.min.map [33m404 [90m3ms[0m

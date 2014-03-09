@@ -1,4 +1,0 @@
-Express server listening on port \\.\pipe\48ce290f-121c-44c5-bb58-dacd0c793e74
-[90mGET / [32m200 [90m316ms - 2.08kb[0m
-[90mGET /name?name=Adnr%C3%A9 [32m200 [90m7ms[0m
-[90mGET / [32m200 [90m54ms - 2.08kb[0m

@@ -1,5 +1,0 @@
-Application has thrown an uncaught exception and is terminated:
-TypeError: Cannot read property 'loginName' of undefined
-    at Object.<anonymous> (C:\Users\Andre\Documents\My Web Sites\NQ2\server.js:178:44)
-    at Object._onImmediate (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\mongoose\node_modules\mquery\lib\utils.js:134:16)
-    at processImmediate [as _immediateCallback] (timers.js:330:15)

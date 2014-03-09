@@ -1,3 +1,0 @@
-Express server listening on port \\.\pipe\e615e28b-fe2e-48f6-9c36-ef5be42c1b09
-[90mGET / [32m200 [90m276ms - 287b[0m
-[90mGET /javascripts/angular.min.js.map [33m404 [90m2ms[0m
