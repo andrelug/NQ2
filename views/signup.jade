@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    div.window.area
+        div.container
+            div.input5.area.show
+                h1 Welcome to Normal Questions
+
+                if(message.length > 0)
+                    div #{ message }
+
+                form(method="post", action="/newUser")
+                    input#fname(type="text", name="firstName", placeholder="First Name")
+
+                    input#gender(type="hidden", name="gender")
+
+                    input(type="text", name="loginName", placeholder="Login Name")
+
+                    input(type="text", name="email", placeholder="Email")
+
+                    input(type="password", name="password", placeholder="Password")
+
+                    input.submit(type="submit", value="Register")
+
+                ul
+                    li
+                        a.facebook(href="#") Facebook login
+                    li
+                        a.twitter(href="#") Twitter login
+                    li
+                        a.linkedin(href="#") LinkedIn Login

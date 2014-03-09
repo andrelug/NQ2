@@ -1,0 +1,7 @@
+Express server listening on port \\.\pipe\88293dfe-a8de-4e6f-90d5-5c19bfdb0f2f
+[90mGET /users/andre/edit [32m200 [90m763ms - 1.36kb[0m
+[90mGET / [36m304 [90m114ms[0m
+[90mGET /name?name=Matheus [32m200 [90m7ms[0m
+[90mGET /a/25 [32m200 [90m4ms[0m
+[90mPOST /newUser [36m302 [90m12ms - 70b[0m
+[90mGET /signup [32m200 [90m63ms - 1.13kb[0m

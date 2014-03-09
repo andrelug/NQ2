@@ -4,7 +4,7 @@ block content
     div.login
         a.appended(href="#")
     div.pass
-        a(href="/login") Login
+        a(href="/login") <i class="fa fa-user"></i>  Login
 
     div.window.area
         div.container
@@ -51,6 +51,9 @@ block content
             
             div.input5.area
                 h1 Welcome to Normal Questions
+
+                if(message.length > 0)
+                    div #{ message }
 
                 form(method="post", action="/newUser")
                     input#fname(type="text", name="firstName", placeholder="First Name")

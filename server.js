@@ -2,15 +2,13 @@ require('newrelic');
 var express = require('express')
   , http = require('http')
   , path = require('path')
-  , schedule = require('node-schedule')
   , mongoose = require('mongoose')
   , passport = require('passport')
   , flash 	 = require('connect-flash')
-  , configDB = require('./config/database.js');
+  , configDB = require('./config/database.js')
+  , Users = require('./app/models/user');
 
 var app = express();
-
-require('./app/routes.js')(app, passport, mongoose);
 
 if ('development' == app.get('env')) {
   var connectionString = 'mongodb://localhost/normalquestions'
@@ -19,6 +17,8 @@ if ('development' == app.get('env')) {
 }
 
 mongoose.connect(configDB.url);
+
+require('./config/passport.js')(passport); // pass passport for configuration
 
 var QuestionSchema = new mongoose.Schema({
     question: String,
@@ -30,58 +30,6 @@ var QuestionSchema = new mongoose.Schema({
     }
 }),
     Questions = mongoose.model('Questions', QuestionSchema);
-
-var UserSchema = new mongoose.Schema({
-    name: {
-        first: String,
-        middle: String,
-        last: String,
-        nickName: String,
-        loginName: {type: String, lowercase: true, trim: true, required: true, unique: true, index: true}
-    },
-    birthDate: Date,
-    email: String,
-    gender: String,
-    password: {
-        main: String,
-        past: {
-            past1: String,
-            past2: String
-        }
-    },
-    localization: {
-        country: String,
-        state: String,
-        city: String,
-        zipcode: Number,
-        telephone: Number
-    },
-    logIn: {
-        logins: [{
-            at: Date
-        }],
-        recordedIp: {
-            last: Number,
-            past: {
-                past1: Number,
-                past2: Number
-            }
-        }
-    },
-    social: {
-        facebook: {
-            auth: String,
-            email: String,
-            url: String,
-            likes: [String]
-        },
-        twitter:{
-            url: String
-        }
-    },
-    deleted: {type: Boolean, default: false}
-}),
-    Users = mongoose.model('Users', UserSchema);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -101,23 +49,10 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-// Cron jobs
-var total,
-    male,
-    female;
-
-var j = schedule.scheduleJob('00 * * * *', function(){
-    Users.count({}, function(err, docs){
-        total = docs;
-    });
-    Users.count({gender: "male"}, function(err, docs){
-        male = docs;
-    });
-    Users.count({gender: "female"}, function(err, docs){
-        female = docs;
-    });
-});
-
+// =====================================
+// ROUTES ==============================
+// =====================================
+require('./app/routes.js')(app, passport, mongoose);
 
 app.configure('development', function(){
   app.use(express.errorHandler());

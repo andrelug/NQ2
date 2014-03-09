@@ -1,0 +1,11 @@
+Express server listening on port \\.\pipe\3908ba0b-6784-442a-91ae-a090805ce51d
+[90mGET / [32m200 [90m789ms - 2.33kb[0m
+[90mGET /name?name=Marina [32m200 [90m8ms[0m
+[90mGET /a/24 [32m200 [90m4ms[0m
+[90mPOST /newUser [36m302 [90m109ms - 68b[0m
+[90mGET /users [32m200 [90m38ms - 540b[0m
+[90mGET /users/marina [32m200 [90m40ms - 417b[0m
+[90mGET /users/marina/edit [32m200 [90m101ms - 1.37kb[0m
+[90mPUT /users/marina [36m302 [90m179ms - 82b[0m
+[90mGET /users/marina [32m200 [90m46ms - 537b[0m
+[90mGET /users [36m304 [90m25ms[0m

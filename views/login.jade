@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    section.loginPage
+        h1 <i class="fa fa-sign-in"></i> Log In
+        
+        if(message.length > 0)
+            div #{ message }
+
+        form(action="/login", method="post")
+            input(type="text", name="email", placeholder="Email")
+            br
+            input(type="password", name="password", placeholder="Password")
+            br
+            input(type="submit", value="Log In")

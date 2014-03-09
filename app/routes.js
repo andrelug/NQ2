@@ -1,15 +1,34 @@
+var Users = require('./models/user');
+schedule = require('node-schedule');
+
+var total,
+    male,
+    female;
+
+    var j = schedule.scheduleJob('00 * * * *', function () {
+        Users.count({}, function (err, docs) {
+            total = docs;
+        });
+        Users.count({ gender: "male" }, function (err, docs) {
+            male = docs;
+        });
+        Users.count({ gender: "female" }, function (err, docs) {
+            female = docs;
+        });
+    });
+    
 module.exports = function (app, passport, mongoose) {
 
     // =====================================
-	// HOME PAGE ===========================
-	// =====================================
+    // HOME PAGE ===========================
+    // =====================================
     app.get('/', function (req, res) {
-        res.render("index"/*, { message: req.flash('signupMessage') }*/);
+        res.render("index", { message: req.flash('signupMessage') });
     });
 
     // =====================================
-	// AJAX GET NAME =======================
-	// =====================================
+    // AJAX GET NAME =======================
+    // =====================================
     app.get("/name", function (req, res) {
         Users.find({ 'name.first': req.query.name }, { 'name.first': 1, _id: 0 }, function (err, docs) {
             var sendName = { total: total, name: docs.length };
@@ -18,8 +37,8 @@ module.exports = function (app, passport, mongoose) {
     });
 
     // =====================================
-	// AJAX GET AGE ========================
-	// =====================================
+    // AJAX GET AGE ========================
+    // =====================================
     app.get('/a/:age', function (req, res) {
         var myDate = new Date();
         var dateCal = req.params.age * 365.25;
@@ -39,46 +58,58 @@ module.exports = function (app, passport, mongoose) {
 
 
     // =====================================
-	// USER SIGNUP =========================
-	// =====================================
-    app.post("/newUser", function (req, res) {
-        var b = req.body;
-        new Users({
-            name: {
-                first: b.firstName,
-                loginName: b.loginName
-            },
-            email: b.email,
-            gender: b.gender,
-            password: {
-                main: b.password
-            }
-        }).save(function (err, docs) {
-            if (err) res.json(err);
-            res.redirect('/users/' + docs.name.loginName);
+    // USER SIGNUP =========================
+    // =====================================
+    app.post('/newUser', passport.authenticate('local-signup', {
+        successRedirect: '/users', // redirect to the secure profile section
+        failureRedirect: '/signup', // redirect back to the signup page if there is an error
+        failureFlash: true // allow flash messages     
+    }));
+    /*  app.post("/newUser", function (req, res) {
+    var b = req.body;
+    new Users({
+    name: {
+    first: b.firstName,
+    loginName: b.loginName
+    },
+    email: b.email,
+    gender: b.gender,
+    password: {
+    main: b.password
+    }
+    }).save(function (err, docs) {
+    if (err) res.json(err);
+    res.redirect('/users/' + docs.name.loginName);
+    });
+    }); */
+
+    // =====================================
+    // LOG IN ==============================
+    // =====================================
+    app.get('/login', function (req, res) {
+        res.render("login", { message: req.flash('loginMessage') });
+    });
+
+    // =====================================
+    // SIGN UP  ============================
+    // =====================================
+    app.get('/signup', function (req, res) {
+        res.render("signup", { message: req.flash('signupMessage') });
+    });
+
+
+    // =====================================
+    // PROFILE PAGE ========================
+    // =====================================
+    app.get('/profile', isLoggedIn, function (req, res) {
+        res.render('users/profile', {
+            user: req.user // get the user out of session and pass to template
         });
     });
 
     // =====================================
-	// LOG IN ==============================
-	// =====================================
-    app.get('/login', function (req, res) {
-        res.render("login"/*, { message: req.flash('loginMessage') }*/)
-    });
-
-
+    // ALL USERS ===========================
     // =====================================
-	// PROFILE PAGE ========================
-	// =====================================
-    app.get('/profile', isLoggedIn, function(req, res) {
-		res.render('users/profile', {
-			user : req.user // get the user out of session and pass to template
-		});
-	});
-
-    // =====================================
-	// ALL USERS ===========================
-	// =====================================
     app.get('/users', isLoggedIn, function (req, res) {
         Users.find({ deleted: false }, function (err, docs) {
             res.render('users/index', { users: docs });
@@ -86,24 +117,24 @@ module.exports = function (app, passport, mongoose) {
     });
 
     // =====================================
-	// LOGOUT ==============================
-	// =====================================
-	app.get('/logout', function(req, res) {
-		req.logout();
-		res.redirect('/');
-	});
+    // LOGOUT ==============================
+    // =====================================
+    app.get('/logout', function (req, res) {
+        req.logout();
+        res.redirect('/');
+    });
 
     // =====================================
-	// NEW USER ============================
-	// =====================================
+    // NEW USER ============================
+    // =====================================
     app.get('/users/new', function (req, res) {
         res.render('users/new');
     });
 
-    
+
     // =====================================
-	// CREATE USER =========================
-	// =====================================
+    // CREATE USER =========================
+    // =====================================
     app.post('/users', function (req, res) {
         var b = req.body;
         new Users({
@@ -135,8 +166,8 @@ module.exports = function (app, passport, mongoose) {
 
 
     // =====================================
-	// LOGINNAME PARAM =====================
-	// =====================================
+    // LOGINNAME PARAM =====================
+    // =====================================
     app.param('loginName', function (req, res, next, loginName) {
         Users.find({ 'name.loginName': loginName }, function (err, docs) {
             req.loginName = docs[0];
@@ -145,8 +176,8 @@ module.exports = function (app, passport, mongoose) {
     });
 
     // =====================================
-	// SHOW USER ===========================
-	// =====================================
+    // SHOW USER ===========================
+    // =====================================
     app.get('/users/:loginName', function (req, res) {
         if (req.loginName.deleted === false) {
             res.render("users/show", { user: req.loginName });
@@ -156,15 +187,15 @@ module.exports = function (app, passport, mongoose) {
     });
 
     // =====================================
-	// EDIT USER ===========================
-	// =====================================
+    // EDIT USER ===========================
+    // =====================================
     app.get('/users/:loginName/edit', function (req, res) {
         res.render("users/edit", { user: req.loginName });
     });
 
     // =====================================
-	// UPDATE USER =========================
-	// =====================================
+    // UPDATE USER =========================
+    // =====================================
     app.put('/users/:loginName', function (req, res) {
         var b = req.body;
         Users.update(
@@ -200,8 +231,8 @@ module.exports = function (app, passport, mongoose) {
 
 
     // =====================================
-	// DELETE USER =========================
-	// =====================================
+    // DELETE USER =========================
+    // =====================================
     app.put('/users/:loginName/delete', function (req, res) {
         Users.update(
             { 'name.loginName': req.params.loginName },
@@ -216,8 +247,8 @@ module.exports = function (app, passport, mongoose) {
     });
 
     // =====================================
-	// RESTORE USER ========================
-	// =====================================
+    // RESTORE USER ========================
+    // =====================================
     app.put('/users/:loginName/restore', function (req, res) {
         Users.update(
             { 'name.loginName': req.params.loginName },
@@ -232,8 +263,8 @@ module.exports = function (app, passport, mongoose) {
     });
 
     // =====================================
-	// TEST AGE VARIABLES ==================
-	// =====================================
+    // TEST AGE VARIABLES ==================
+    // =====================================
     app.get('/test/:age', function (req, res) {
         var myDate = new Date();
         var dateCal = req.params.age * 365.25;
