@@ -1,0 +1,9 @@
+Error: ENOENT, open 'C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\node_modules\connect\node_modules\public\favicon.ico'
+Error: ENOENT, open 'C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\node_modules\connect\node_modules\public\favicon.ico'
+Error: ENOENT, open 'C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\express\node_modules\connect\node_modules\public\favicon.ico'
+Application has thrown an uncaught exception and is terminated:
+Error: Not a valid BCrypt hash.
+    at process.<anonymous> (C:\Program Files (x86)\iisnode-dev\release\x86\interceptor.js:201:110)
+    at process.EventEmitter.emit (events.js:95:17)
+    at process._fatalException (node.js:272:26)
+    at process._asyncFatalException [as _fatalException] (C:\Users\Andre\Documents\My Web Sites\NQ2\node_modules\newrelic\node_modules\continuation-local-storage\node_modules\async-listener\glue.js:199:34)

@@ -1,5 +1,17 @@
 h1 All Users
 
+h2 Hi, my name is #{user.name.first}
+h3 my id is #{user._id}
+h4 and my password is #{user.password.main}
+
+br
+br
+
+a(href="/logout") Log Out
+
+br
+br
+
 ul
     each user in users
         li: a(href="/users/#{user.name.loginName}") #{user.name.first} (#{user.email})

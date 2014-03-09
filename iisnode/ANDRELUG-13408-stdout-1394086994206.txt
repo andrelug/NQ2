@@ -1,2 +1,0 @@
-Express server listening on port \\.\pipe\4968a99e-8405-4d18-bf58-da78548571b5
-[90mGET /users/glaura [32m200 [90m343ms - 255b[0m

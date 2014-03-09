@@ -1,5 +1,0 @@
-Express server listening on port \\.\pipe\bb12eec9-3d55-463f-8529-6d2eb27b80c3
-[90mGET / [32m200 [90m319ms - 2.08kb[0m
-[90mGET /n?{%22name%22:%22andre%22} [32m0 [90m6ms[0m
-[90mGET / [32m200 [90m40ms - 2.08kb[0m
-[90mGET /n?{%22name%22:%22Andr%C3%A9%22} [32m0 [90m3ms[0m
