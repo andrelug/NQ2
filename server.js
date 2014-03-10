@@ -51,6 +51,16 @@ app.configure(function(){
 // =====================================
 // ROUTES ==============================
 // =====================================
+
+// non-www to www
+app.all('/*', function (req, res, next) {
+    if (req.headers.host.match(/^www/) !== null) {
+        res.redirect(301, 'http://' + req.headers.host.replace(/^www\./, '') + req.url);
+    } else {
+        next();
+    }
+});
+
 require('./app/routes.js')(app, passport, mongoose);
 
 app.configure('development', function(){
