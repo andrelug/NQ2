@@ -209,8 +209,35 @@ module.exports = function (app, passport, mongoose) {
         );
 
 
+    // =============================================================================
+    // UNLINK ACCOUNTS =============================================================
+    // =============================================================================
+    // facebook -------------------------------
+    app.get('/unlink/facebook', function(req, res) {
+        var user            = req.user;
+        user.social.facebook.token = undefined;
+        user.save(function(err) {
+            res.redirect('/users');
+        });
+    });
 
+    // twitter --------------------------------
+    app.get('/unlink/twitter', function(req, res) {
+        var user           = req.user;
+        user.social.twitter.token = undefined;
+        user.save(function(err) {
+           res.redirect('/users');
+        });
+    });
 
+    // google ---------------------------------
+    app.get('/unlink/google', function(req, res) {
+        var user          = req.user;
+        user.social.google.token = undefined;
+        user.save(function(err) {
+           res.redirect('/users');
+        });
+    });
 
 
 

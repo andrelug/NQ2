@@ -13,7 +13,7 @@ var configAuth = require('./auth');
 // Function to randomize string
 function randomString() {
 	var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-	var string_length = 8;
+	var string_length = 16;
 	var randomstring = '';
 	for (var i=0; i<string_length; i++) {
 		var rnum = Math.floor(Math.random() * chars.length);
@@ -192,32 +192,57 @@ module.exports = function (passport) {
 
                     // if the user is found, then log them in
                     if (user) {
+                        // if there is a user id already but no token (user was linked at one point and then removed)
+	                	// just add our token and profile information
+                        if (!user.social.facebook.token) {
+	                        user.social.facebook.token = token;
+
+	                        user.save(function(err) {
+	                            if (err)
+	                                throw err;
+	                            return done(null, user);
+	                        });
+	                    }
+
                         return done(null, user); // user found, return that user
                     } else {
                         var newUser = new Users();
-
-                        // set all of the facebook information in our user model
-                        newUser.social.facebook.id = profile.id; // set the users facebook id	                
-                        newUser.social.facebook.token = token; // we will save the token that facebook provides to the user	                
-                        newUser.social.facebook.name = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
-                        newUser.name.first = profile.name.givenName;
-                        newUser.name.last = profile.name.familyName;
-                        newUser.social.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
-                        newUser.email = profile.emails[0].value;
-                        newUser.name.loginName = profile.username;
-                        newUser.gender = profile.gender;
-                        newUser.social.facebook.url = profile.profileUrl;
-                        newUser.bio = profile._json.bio;
-                        newUser.sites = profile._json.website;
-                        newUser.localization.city = profile._json.hometown.name;
-
-                        // save our user to the database
-                        newUser.save(function (err) {
-                            if (err)
+                        Users.find({'name.loginName': profile.username}, function(err, login){
+                            if(err)
                                 throw err;
+                            
+                            // Verify the uniqueness of the loginName and tries to give the original that came from the social network
+                            if(!login){
+                                newUser.name.loginName = profile.username;
+                            }else{
+                                newUser.name.loginName = randomString();          
+                            }
+                            
+                            // Generate a new loginName
+                            // set all of the facebook information in our user model
+                            newUser.social.facebook.id = profile.id; // set the users facebook id	                
+                            newUser.social.facebook.token = token; // we will save the token that facebook provides to the user	                
+                            newUser.social.facebook.name = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
+                            newUser.social.facebook.url = profile.profileUrl;
+                            newUser.social.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
+                        
+                            // General profile related
+                            newUser.name.first = profile.name.givenName;
+                            newUser.name.last = profile.name.familyName;
+                            newUser.email = profile.emails[0].value;
+                            newUser.gender = profile.gender;
+                            newUser.bio = profile._json.bio;
+                            newUser.sites = profile._json.website;
+                            newUser.localization.city = profile._json.hometown.name;
 
-                            // if successful, return the new user
-                            return done(null, newUser);
+                            // save our user to the database
+                            newUser.save(function (err) {
+                                if (err)
+                                    throw err;
+
+                                // if successful, return the new user
+                                return done(null, newUser);
+                            });
                         });
                     }
                 });
@@ -251,46 +276,93 @@ module.exports = function (passport) {
 
         consumerKey: configAuth.twitterAuth.consumerKey,
         consumerSecret: configAuth.twitterAuth.consumerSecret,
-        callbackURL: configAuth.twitterAuth.callbackURL
+        callbackURL: configAuth.twitterAuth.callbackURL,
+        passReqToCallback : true
 
     },
-    function (token, tokenSecret, profile, done) {
+    function (req, token, tokenSecret, profile, done) {
 
         // make the code asynchronous
         // User.findOne won't fire until we have all our data back from Twitter
         process.nextTick(function () {
 
-            Users.findOne({ 'social.twitter.id': profile.id }, function (err, user) {
+            // check if the user is already logged in
+            if (!req.user) {
+                Users.findOne({ 'social.twitter.id': profile.id }, function (err, user) {
 
-                // if there is an error, stop everything and return that
-                // ie an error connecting to the database
-                if (err)
-                    return done(err);
+                    // if there is an error, stop everything and return that
+                    // ie an error connecting to the database
+                    if (err)
+                        return done(err);
 
-                // if the user is found then log them in
-                if (user) {
-                    return done(null, user); // user found, return that user
-                } else {
-                    // if there is no user, create them
-                    var newUser = new Users();
+                    // if the user is found then log them in
+                    if (user) {
+                        // if there is a user id already but no token (user was linked at one point and then removed)
+	                	// just add our token and profile information
+                        if (!user.social.twitter.token) {
+	                        user.social.twitter.token = token;
 
-                    // set all of the user data that we need
-                    newUser.social.twitter.id = profile.id;
-                    newUser.social.twitter.token = token;
-                    newUser.social.twitter.username = profile.username;
-                    newUser.email = "Needed";
-                    newUser.name.loginName = profile.username;
-                    newUser.social.twitter.displayName = profile.displayName;
+	                        user.save(function(err) {
+	                            if (err)
+	                                throw err;
+	                            return done(null, user);
+	                        });
+	                    }
+                        return done(null, user); // user found, return that user
+                    } else {
+                        // if there is no user, create them
+                        var newUser = new Users();
+                        Users.find({'name.loginName': profile.username}, function(err, login){
+                            if(err)
+                                throw err;
+                            
+                            // Verify the uniqueness of the loginName and tries to give the original that came from the social network
+                            if(!login){
+                                newUser.name.loginName = profile.username;
+                            }else{
+                                newUser.name.loginName = randomString();          
+                            }
 
-                    // save our user into the database
-                    newUser.save(function (err) {
-                        if (err)
-                            throw err;
-                        return done(null, newUser);
-                    });
-                }
-            });
+                            // set all of the user data that we need
+                            newUser.social.twitter.id = profile.id;
+                            newUser.social.twitter.token = token;
+                            newUser.social.twitter.displayName = profile.displayName;
+                            newUser.social.twitter.username = profile.username;
+                            // basic profile
+                            newUser.email = "Needed";
+                            newUser.name.first = profile.displayName;
+                            newUser.photo = profile.photos[0].value;
+                            newUser.localization.city = profile._json.location;
+                            newUser.bio = profile._json.description;
+                        
 
+
+                            // save our user into the database
+                            newUser.save(function (err) {
+                                if (err)
+                                    throw err;
+                                return done(null, newUser);
+                            });
+                        });
+                    }
+                });
+            }else{
+                var user            = req.user; // pull the user out of the session
+
+				// update the current users facebook credentials
+	            user.social.twitter.id    = profile.id;
+	            user.social.twitter.token = token;
+	            user.social.twitter.displayName  = profile.displayName;
+                user.social.twitter.username = profile.username;
+	            
+
+				// save the user
+	            user.save(function(err) {
+	                if (err)
+	                    throw err;
+	                return done(null, user);
+	            });
+            }
         });
 
     }));

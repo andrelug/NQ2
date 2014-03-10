@@ -15,6 +15,7 @@ var UserSchema = new mongoose.Schema({
     gender: String,
     sites: [String],
     bio: String,
+    photo: String,
     password: {
         main: String,
         past: {
