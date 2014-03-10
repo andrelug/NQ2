@@ -1,12 +1,12 @@
 {
-  "name": "WebMatrixExpressSite",
+  "name": "Normal Questions",
   "version": "0.2.0",
-  "author": "The WebMatrix Team <webmatrix@microsoft.com>",
-  "description": "A simple boilerplate for building node applications on Windows Azure (or wherever)",
+  "author": "Normal Questions",
+  "description": "Collective intel",
   "contributors": [
     {
-      "name": "Justin Beckwith",
-      "email": "justbe@microsoft.com"
+      "name": "contact",
+      "email": "contact@normalquestions.com"
     }
   ],
   "main": "./server.js",

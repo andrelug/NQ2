@@ -53,12 +53,12 @@ app.configure(function(){
 // =====================================
 
 // non-www to www
-app.all('/*', function (req, res, next) {
-    if (req.headers.host.match(/^www/) !== null) {
-        res.redirect(301, 'http://' + req.headers.host.replace(/^www\./, '') + req.url);
-    } else {
-        next();
-    }
+app.get('*', function(req, res, next) {
+  if (req.headers.host.slice(0, 3) != 'www') {
+    res.redirect(301, 'http://www.' + req.headers.host + req.url);
+  } else {
+    next();
+  }
 });
 
 require('./app/routes.js')(app, passport, mongoose);
