@@ -18,7 +18,7 @@ module.exports = {
 	'googleAuth' : {
 		'clientID' 		: '41120153991-dnf1v0oc8bs4ocvn6c4o8j34c84o7mh0.apps.googleusercontent.com',
 		'clientSecret' 	: 'jGDuQbnZUY2QB8EAIEFO7cq4',
-		'callbackURL' 	: 'http://www.normalquestions.com/google/callback'
+		'callbackURL' 	: 'http://www.normalquestions.com/auth/google/callback'
 	}
 
 };
