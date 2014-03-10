@@ -1,5 +1,5 @@
 {
-  "name": "Normal Questions",
+  "name": "NQ2",
   "version": "0.2.0",
   "author": "Normal Questions",
   "description": "Collective intel",
@@ -16,16 +16,16 @@
     "express"
   ],
   "dependencies": {
-    "jade": "~1.3.0",
-    "express": "~3.5.0",
+    "jade": "*",
+    "express": "*",
     "mongodb": "*",
     "mongoose": "*",
     "socket.io": "*",
     "newrelic": "*",
     "node-schedule": "*",
     "passport": "*",
-    "passport-local": "*",
-    "passport-facebook": "*",
+    "passport-local": "~1.0.0",
+    "passport-facebook": "~1.0.3",
     "passport-twitter": "*",
     "passport-google-oauth": "*",
     "connect-flash": "*",
