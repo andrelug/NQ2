@@ -23,7 +23,12 @@ module.exports = function (app, passport, mongoose) {
     // HOME PAGE ===========================
     // =====================================
     app.get('/', function (req, res) {
-        res.render("index", { message: req.flash('signupMessage') });
+        var user = req.user;
+        if(!user){
+            res.render("index", { message: req.flash('signupMessage') });
+        }else{
+            res.redirect("/users");
+        }
     });
 
     // =====================================
@@ -70,11 +75,16 @@ module.exports = function (app, passport, mongoose) {
     // LOG IN ==============================
     // =====================================
     app.get('/login', function (req, res) {
-        res.render("login", { message: req.flash('loginMessage') });
+        var user = req.user;
+        if(!user){
+            res.render("login", { message: req.flash('loginMessage') });
             if (req.url === '/favicon.ico') {
                 r.writeHead(200, {'Content-Type': 'image/x-icon'} );
                 return r.end();
             }
+        }else{
+            res.redirect("/users");
+        }
     });
 
 
@@ -88,8 +98,121 @@ module.exports = function (app, passport, mongoose) {
     // SIGN UP  ============================
     // =====================================
     app.get('/signup', function (req, res) {
-        res.render("signup", { message: req.flash('signupMessage') });
+        var user = req.user;
+        if(!user){
+            res.render("signup", { message: req.flash('signupMessage') });
+        }else{
+            res.redirect("/users");
+        }
     });
+
+    // =====================================
+	// FACEBOOK ROUTES =====================
+	// =====================================
+	// route for facebook authentication and login
+	app.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email', 'user_about_me',
+    'user_birthday ', 'user_hometown', 'user_website' ] }));
+
+	// handle the callback after facebook has authenticated the user
+	app.get('/auth/facebook/callback',
+	    passport.authenticate('facebook', {
+		    successRedirect : '/users',
+		    failureRedirect : '/'
+	    })
+    );
+
+    // =====================================
+	// TWITTER ROUTES ======================
+	// =====================================
+	// route for twitter authentication and login
+	app.get('/auth/twitter', passport.authenticate('twitter'));
+
+	// handle the callback after twitter has authenticated the user
+	app.get('/auth/twitter/callback',
+		passport.authenticate('twitter', {
+			successRedirect : '/users',
+			failureRedirect : '/'
+		})
+    );
+
+    // =====================================
+	// GOOGLE ROUTES =======================
+	// =====================================
+	// send to google to do the authentication
+	// profile gets us their basic information including their name
+	// email gets their emails
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email', 'openid'] }));
+
+    // the callback after google has authenticated the user
+    app.get('/auth/google/callback',
+        passport.authenticate('google', {
+                successRedirect : '/users',
+                failureRedirect : '/'
+        })
+    );
+
+
+    // =============================================================================
+// AUTHORIZE (ALREADY LOGGED IN / CONNECTING OTHER SOCIAL ACCOUNT) =============
+// =============================================================================
+
+	// locally --------------------------------
+		app.get('/users/edit',isLoggedIn, function(req, res) {
+            var user = req.user;
+			res.render('users/edit', { message: req.flash('loginMessage'), user: user });
+		});
+		app.post('/users/edit', passport.authenticate('local-signup', {
+			successRedirect : '/users', // redirect to the secure profile section
+			failureRedirect : '/users/edit', // redirect back to the signup page if there is an error
+			failureFlash : true // allow flash messages
+		}));
+
+	// facebook -------------------------------
+
+		// send to facebook to do the authentication
+		app.get('/connect/facebook', passport.authorize('facebook', { scope : ['email', 'user_about_me',
+    'user_birthday ', 'user_hometown', 'user_website' ] }));
+
+		// handle the callback after facebook has authorized the user
+		app.get('/connect/facebook/callback',
+			passport.authorize('facebook', {
+				successRedirect : '/users',
+				failureRedirect : '/'
+			})
+        );
+
+	// twitter --------------------------------
+
+		// send to twitter to do the authentication
+		app.get('/connect/twitter', passport.authorize('twitter', { scope : 'email' }));
+
+		// handle the callback after twitter has authorized the user
+		app.get('/connect/twitter/callback',
+			passport.authorize('twitter', {
+				successRedirect : '/users',
+				failureRedirect : '/'
+			})
+        );
+
+
+	// google ---------------------------------
+
+		// send to google to do the authentication
+		app.get('/connect/google', passport.authorize('google', { scope : ['profile', 'email', 'openid'] }));
+
+		// the callback after google has authorized the user
+		app.get('/connect/google/callback',
+			passport.authorize('google', {
+				successRedirect : '/users',
+				failureRedirect : '/'
+			})
+        );
+
+
+
+
+
+
 
     // =====================================
     // ALL USERS ===========================
@@ -153,12 +276,13 @@ module.exports = function (app, passport, mongoose) {
     // =====================================
     // LOGINNAME PARAM =====================
     // =====================================
-    app.param('loginName', function (req, res, next, loginName) {
-        Users.find({ 'name.loginName': loginName }, function (err, docs) {
+    /*app.param('loginName', function (req, res, next, loginName) {
+        var user = req.user;
+        Users.find({ 'name.loginName': user.name.loginName }, function (err, docs) {
             req.loginName = docs[0];
             next();
         });
-    });
+    });*/
 
     // =====================================
     // SHOW USER ===========================
@@ -171,48 +295,7 @@ module.exports = function (app, passport, mongoose) {
         }
     });
 
-    // =====================================
-    // EDIT USER ===========================
-    // =====================================
-    app.get('/users/:loginName/edit', function (req, res) {
-        res.render("users/edit", { user: req.loginName });
-    });
-
-    // =====================================
-    // UPDATE USER =========================
-    // =====================================
-    app.put('/users/:loginName', function (req, res) {
-        var b = req.body;
-        Users.update(
-            { 'name.loginName': req.params.loginName },
-            { $set: {
-                name: {
-                    first: b.firstName,
-                    middle: b.middleName,
-                    last: b.lastName,
-                    nickName: b.nickName,
-                    loginName: b.loginName
-                },
-                birthDate: b.birthDate,
-                email: b.email,
-                gender: b.gender,
-                password: {
-                    main: b.password
-                },
-                localization: {
-                    country: b.country,
-                    state: b.state,
-                    city: b.city,
-                    zipcode: b.zipcode,
-                    telephone: b.telephone
-                }
-            }
-            },
-            function (err) {
-                res.redirect("/users/" + b.loginName);
-            }
-        );
-    });
+    
 
 
     // =====================================

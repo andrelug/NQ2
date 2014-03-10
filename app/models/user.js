@@ -13,6 +13,8 @@ var UserSchema = new mongoose.Schema({
     birthDate: Date,
     email: {type: String, required: true, unique: true, index: true},
     gender: String,
+    sites: [String],
+    bio: String,
     password: {
         main: String,
         past: {
@@ -46,20 +48,20 @@ var UserSchema = new mongoose.Schema({
             email: String,
             name: String,
             url: String,
-            likes: [String]
+            likes: {}
         },
         twitter:{
             id: String,
             token: String,
             displayName: String,
-            username: String,
-            url: String
+            username: String
         },
         google: {
             id: String,
             token: String,
             email: String,
-            name: String
+            name: String,
+            obj: {}
         }
     },
     deleted: {type: Boolean, default: false}

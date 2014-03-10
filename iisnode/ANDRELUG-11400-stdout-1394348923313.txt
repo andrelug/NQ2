@@ -1,6 +1,0 @@
-Express server listening on port \\.\pipe\016171da-deb6-44d9-a33d-c2173207b319
-[90mGET /login [32m200 [90m548ms - 702b[0m
-[90mGET /login [32m200 [90m24ms - 702b[0m
-[90mGET /favicon.ico [33m404 [90m3ms[0m
-[90mGET /favicon.ico [33m404 [90m3ms[0m
-[90mGET /favicon.ico [33m404 [90m2ms[0m

@@ -17,3 +17,42 @@ ul
         li: a(href="/users/#{user.name.loginName}") #{user.name.first} (#{user.email})
 
 a(href="/users/new") New user
+br
+br
+br
+br
+br
+p Linking
+ul
+    li
+        h2 Local Password
+        
+        if(!user.password.main)
+            a(href="/users/edit") Add Password
+    li
+        h2 Facebook
+
+        if(user.social.facebook.token)
+            p id => #{user.social.facebook.id}
+            br
+            a(href="/unlink/facebook") Unlink
+        else
+            a.facebook(href="/connect/facebook") <i class="fa fa-facebook"></i> Facebook Connect
+    li
+        h2 Twitter
+
+        if(user.social.twitter.token)
+            p id => #{user.social.twitter.id}
+            br
+            a(href="/unlink/twitter") Unlink
+        else
+            a.twitter(href="/connect/twitter") <i class="fa fa-twitter"></i> Twitter Connect
+    li
+        h2 Google
+
+        if(user.social.google.token)
+            p id => #{user.social.google.id}
+            br
+            a(href="/unlink/google") Unlink
+        else
+            a.google(href="/connect/google") <i class="fa fa-google-plus"></i> Google Connect
