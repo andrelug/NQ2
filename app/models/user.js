@@ -62,7 +62,7 @@ var UserSchema = new mongoose.Schema({
             token: String,
             email: String,
             name: String,
-            obj: {}
+            url: String
         }
     },
     deleted: {type: Boolean, default: false}

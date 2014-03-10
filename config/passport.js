@@ -22,6 +22,24 @@ function randomString() {
 	return randomstring;
 }
 
+function string_to_slug(str) {
+  str = str.replace(/^\s+|\s+$/g, ''); // trim
+  str = str.toLowerCase();
+  
+  // remove accents, swap ñ for n, etc
+  var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+  var to   = "aaaaeeeeiiiioooouuuunc------";
+  for (var i=0, l=from.length ; i<l ; i++) {
+    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+  }
+
+  str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+    .replace(/\s+/g, '-') // collapse whitespace and replace by -
+    .replace(/-+/g, '-'); // collapse dashes
+
+  return str;
+}
+
 // expose this function to our app using module.exports
 module.exports = function (passport) {
 
@@ -212,7 +230,7 @@ module.exports = function (passport) {
                                 throw err;
                             
                             // Verify the uniqueness of the loginName and tries to give the original that came from the social network
-                            if(!login){
+                            if(login.length == 0){
                                 newUser.name.loginName = profile.username;
                             }else{
                                 newUser.name.loginName = randomString();          
@@ -317,7 +335,7 @@ module.exports = function (passport) {
                                 throw err;
                             
                             // Verify the uniqueness of the loginName and tries to give the original that came from the social network
-                            if(!login){
+                            if(login.length == 0){
                                 newUser.name.loginName = profile.username;
                             }else{
                                 newUser.name.loginName = randomString();          
@@ -376,44 +394,90 @@ module.exports = function (passport) {
         clientID        : configAuth.googleAuth.clientID,
         clientSecret    : configAuth.googleAuth.clientSecret,
         callbackURL     : configAuth.googleAuth.callbackURL,
-
+        passReqToCallback : true
     },
-    function(token, refreshToken, profile, done) {
+    function(req, token, refreshToken, profile, done) {
 
 		// make the code asynchronous
 		// User.findOne won't fire until we have all our data back from Google
 		process.nextTick(function() {
 
+            // check if the user is already logged in
+            if (!req.user) {
+
 	        // try to find the user based on their google id
-	        Users.findOne({ 'social.google.id' : profile.id }, function(err, user) {
-	            if (err)
-	                return done(err);
+	            Users.findOne({ 'social.google.id' : profile.id }, function(err, user) {
+	                if (err)
+	                    return done(err);
 
-	            if (user) {
+	                if (user) {
+                        if (!user.social.google.token) {
+	                        user.social.google.token = token;
 
-	                // if a user is found, log them in
+	                        user.save(function(err) {
+	                            if (err)
+	                                throw err;
+	                            return done(null, user);
+	                        });
+	                    }
+
+	                    // if a user is found, log them in
+	                    return done(null, user);
+	                } else {
+	                    // if the user isnt in our database, create a new user
+	                    var newUser          = new Users();
+                        var googlename = string_to_slug(profile.name.givenName + profile.name.familyName);
+
+                        Users.find({'name.loginName': googlename}, function(err, login){
+                            if(err)
+                                throw err;
+                            
+                            // Verify the uniqueness of the loginName and tries to give the original that came from the social network
+                            if(login.length == 0){
+                                newUser.name.loginName = googlename;
+                            }else{
+                                newUser.name.loginName = randomString();          
+                            }
+
+	                        // set all of the relevant information
+	                        newUser.social.google.id    = profile.id;
+	                        newUser.social.google.token = token;
+	                        newUser.social.google.name  = profile.displayName;
+	                        newUser.social.google.email = profile.emails[0].value; // pull the first email
+                            newUser.social.google.url = profile._json.link;
+
+                            // Basic Profile
+                            newUser.email = profile.emails[0].value;
+                            newUser.name.first = profile.name.givenName;
+                            newUser.name.last = profile.name.familyName;
+                            newUser.gender = profile._json.gender;
+                            newUser.photo = profile._json.picture;
+
+	                        // save the user
+	                        newUser.save(function(err) {
+	                            if (err)
+	                                throw err;
+	                            return done(null, newUser);
+	                        });
+                        });
+	                }
+	            });
+            }else{
+                var user            = req.user; // pull the user out of the session
+
+				// update the current users facebook credentials
+	            user.social.google.id    = profile.id;
+	            user.social.google.token = token;
+	            user.social.google.name  = profile.displayName;
+	            user.social.google.email = profile.emails[0].value; // pull the first email
+
+				// save the user
+	            user.save(function(err) {
+	                if (err)
+	                    throw err;
 	                return done(null, user);
-	            } else {
-	                // if the user isnt in our database, create a new user
-	                var newUser          = new Users();
-
-	                // set all of the relevant information
-	                newUser.social.google.id    = profile.id;
-	                newUser.social.google.token = token;
-	                newUser.social.google.name  = profile.displayName;
-	                newUser.social.google.email = profile.emails[0].value; // pull the first email
-                    newUser.email = profile.emails[0].value;
-                    newUser.name.loginName = randomString();
-                    newUser.social.google.obj = profile;
-
-	                // save the user
-	                newUser.save(function(err) {
-	                    if (err)
-	                        throw err;
-	                    return done(null, newUser);
-	                });
-	            }
-	        });
+	            });
+            }
 	    });
 
     }));
