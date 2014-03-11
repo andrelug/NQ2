@@ -26,6 +26,27 @@ var j = schedule.scheduleJob('0-59 * * * * *', function () {
     });
 });
 
+
+// Needed function to ajax call
+// transforms every word in slug
+function string_to_slug(str) {
+    str = str.replace(/^\s+|\s+$/g, ''); // trim
+    str = str.toLowerCase();
+		  
+    // remove accents, swap ñ for n, etc
+    var from = "àãáäâèéëêìíïîòóõöôùúüûñç·/_,:;";
+    var to   = "aaaaaeeeeiiiiooooouuuunc------";
+    for (var i=0, l=from.length ; i<l ; i++) {
+        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    }
+
+    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+    .replace(/\s+/g, '-') // collapse whitespace and replace by -
+    .replace(/-+/g, '-'); // collapse dashes
+
+    return str;
+}
+
 // Session check function
 var sessionReload = function(req, res, next){
     if('HEAD' == req.method || 'OPTIONS' == req.method){
@@ -54,7 +75,7 @@ module.exports = function (app, passport, mongoose) {
     // AJAX GET NAME =======================
     // =====================================
     app.get("/name", function (req, res) {
-        Users.find({ 'name.first': req.query.name }, { 'name.first': 1, _id: 0 }, function (err, docs) {
+        Users.find({ 'name.parsed': string_to_slug(req.query.name)}, { 'name.first': 1, _id: 0 }, function (err, docs) {
             if (!total) {
                 Stats.find({ 'name': 'stats' }, { 'users.total': 1, _id: 0 }, function (err, stats) {
                     total = stats[0].users.total;
