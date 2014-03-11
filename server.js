@@ -39,7 +39,7 @@ app.configure(function(){
   app.use(express.json());
   app.use(express.urlencoded());
   app.use(express.cookieParser());
-  app.use(express.session({secret: 'cmsk3sle2i32lçcoe90ksd'}));
+  app.use(express.session({secret: 'cmsk3sle2i32lçcoe90ksd', cookie: {maxAge: 5000}}));
   app.use(passport.initialize());
   app.use(passport.session()); // persistent login sessions
   app.use(flash()); // use connect-flash for flash messages stored in session
@@ -52,14 +52,15 @@ app.configure(function(){
 // ROUTES ==============================
 // =====================================
 
+/*
 // non-www to www
-app.get('*', function(req, res, next) {
+app.all('*', function(req, res, next) {
   if (req.headers.host.slice(0, 3) != 'www') {
     res.redirect(301, 'http://www.' + req.headers.host + req.url);
   } else {
     next();
   }
-});
+}); */
 
 require('./app/routes.js')(app, passport, mongoose);
 

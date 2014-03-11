@@ -147,7 +147,7 @@ input{
     float: left;
     margin-right: 35px;
 }
-.gender li a, .input5 li a{
+.gender li a, .input5 li a, .loginPage li a{
     text-align: center;
     text-decoration: none;
     height: auto;
@@ -157,7 +157,7 @@ input{
     opacity: 0.9;
     display: block;
 }
-.gender li a:hover, .input5 li a:hover{
+.gender li a:hover, .input5 li a:hover, .loginPage li a:hover{
     background-color: rgb(106, 111, 111);
 }
 .input3 h5{
@@ -232,7 +232,7 @@ input{
     background-color: #5C5F5F;
     color: white;
 }
-.input5 ul{
+.input5 ul, .loginPage ul{
     margin-top: 30px;
 }
 .facebook{
@@ -253,7 +253,7 @@ input{
 .loginPage{
     width: 30%;
     height: 30%;
-    margin: 15% auto 0;
+    margin: 5% auto 0;
 }
 
 .loginPage h1{
@@ -271,4 +271,10 @@ input{
 }
 .show{
     display: block;
+}
+.loginPage li a{
+    margin-bottom: 15px;
+    margin-right: 0px;
+    width: 100%;
+    font-size: 16pt;
 }
