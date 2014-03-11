@@ -3,43 +3,14 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy  = require('passport-twitter').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+// load up helper functions
+var func = require('./functions');
+
 // load up the user model
 var Users = require('../app/models/user');
 
 // load the auth variables
 var configAuth = require('./auth');
-
-
-// Function to randomize string
-function randomString() {
-	var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-	var string_length = 16;
-	var randomstring = '';
-	for (var i=0; i<string_length; i++) {
-		var rnum = Math.floor(Math.random() * chars.length);
-		randomstring += chars.substring(rnum,rnum+1);
-	}
-	return randomstring;
-}
-
-// transforms every word in slug
-function string_to_slug(str) {
-    str = str.replace(/^\s+|\s+$/g, ''); // trim
-    str = str.toLowerCase();
-		  
-    // remove accents, swap ñ for n, etc
-    var from = "àãáäâèéëêìíïîòóõöôùúüûñç·/_,:;";
-    var to   = "aaaaaeeeeiiiiooooouuuunc------";
-    for (var i=0, l=from.length ; i<l ; i++) {
-        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-    }
-
-    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-    .replace(/\s+/g, '-') // collapse whitespace and replace by -
-    .replace(/-+/g, '-'); // collapse dashes
-
-    return str;
-}
 
 // expose this function to our app using module.exports
 module.exports = function (passport) {
@@ -98,7 +69,7 @@ module.exports = function (passport) {
                     if (user) {
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
-                        Users.findOne({ 'name.loginName': string_to_slug(loginName) }, function (err, login) {
+                        Users.findOne({ 'name.loginName': func.string_to_slug(loginName) }, function (err, login) {
                             if (err)
                                 return done(err);
 
@@ -110,12 +81,12 @@ module.exports = function (passport) {
                                 var newUser = new Users();
 
                                 // set the user's local credentials
-                                newUser.name.loginName = string_to_slug(loginName);
+                                newUser.name.loginName = func.string_to_slug(loginName);
                                 newUser.email = email;
                                 newUser.password.main = newUser.generateHash(password);
                                 newUser.name.first = firstName;
                                 newUser.gender = gender;
-                                newUser.name.parsed = string_to_slug(firstName);
+                                newUser.name.parsed = func.string_to_slug(firstName);
 
                                 // save the user
                                 newUser.save(function (err) {
@@ -236,7 +207,7 @@ module.exports = function (passport) {
                             if (login.length == 0) {
                                 newUser.name.loginName = profile.username;
                             } else {
-                                newUser.name.loginName = randomString();
+                                newUser.name.loginName = func.randomString();
                             }
 
                             // Generate a new loginName
@@ -255,7 +226,7 @@ module.exports = function (passport) {
                             newUser.bio = profile._json.bio;
                             newUser.sites = profile._json.website;
                             newUser.localization.city = profile._json.hometown.name;
-                            newUser.name.parsed = string_to_slug(profile.name.givenName);
+                            newUser.name.parsed = func.string_to_slug(profile.name.givenName);
 
                             // save our user to the database
                             newUser.save(function (err) {
@@ -342,7 +313,7 @@ module.exports = function (passport) {
                             if (login.length == 0) {
                                 newUser.name.loginName = profile.username;
                             } else {
-                                newUser.name.loginName = randomString();
+                                newUser.name.loginName = func.randomString();
                             }
 
                             // set all of the user data that we need
@@ -356,7 +327,7 @@ module.exports = function (passport) {
                             newUser.photo = profile.photos[0].value;
                             newUser.localization.city = profile._json.location;
                             newUser.bio = profile._json.description;
-                            newUser.name.parsed = string_to_slug(profile.displayName);
+                            newUser.name.parsed = func.string_to_slug(profile.displayName);
 
 
 
@@ -431,7 +402,7 @@ module.exports = function (passport) {
                     } else {
                         // if the user isnt in our database, create a new user
                         var newUser = new Users();
-                        var googlename = string_to_slug(profile.name.givenName + profile.name.familyName);
+                        var googlename = func.string_to_slug(profile.name.givenName + profile.name.familyName);
 
                         Users.find({ 'name.loginName': googlename }, function (err, login) {
                             if (err)
@@ -441,7 +412,7 @@ module.exports = function (passport) {
                             if (login.length == 0) {
                                 newUser.name.loginName = googlename;
                             } else {
-                                newUser.name.loginName = randomString();
+                                newUser.name.loginName = func.randomString();
                             }
 
                             // set all of the relevant information
@@ -457,7 +428,7 @@ module.exports = function (passport) {
                             newUser.name.last = profile.name.familyName;
                             newUser.gender = profile._json.gender;
                             newUser.photo = profile._json.picture;
-                            newUser.name.parsed = string_to_slug(profile.name.givenName);
+                            newUser.name.parsed = func.string_to_slug(profile.name.givenName);
 
                             // save the user
                             newUser.save(function (err) {
