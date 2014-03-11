@@ -42,12 +42,15 @@ module.exports = function (app, passport, mongoose) {
     // =====================================
     // HOME PAGE ===========================
     // =====================================
-    app.get('/', function (req, res) {
+    app.get('/', function (req, res, next) {
         var user = req.user;
         if (!user) {
             res.render("index", { message: req.flash('signupMessage') });
         } else {
-            res.redirect("/users");
+            Users.find({ deleted: false }, function (err, docs) {
+                sessionReload(req, res, next);
+                res.render('users/index', { users: docs, user: user });
+            });
         }
     });
 
@@ -106,6 +109,15 @@ module.exports = function (app, passport, mongoose) {
         failureFlash: true // allow flash messages     
     }));
 
+    app.get('/signup', function (req, res) {
+        var user = req.user;
+        if (!user) {
+            res.render("signup", { message: req.flash('signupMessage') });
+        } else {
+            res.redirect("/users");
+        }
+    });
+
     // =====================================
     // LOG IN ==============================
     // =====================================
@@ -118,28 +130,16 @@ module.exports = function (app, passport, mongoose) {
                 return r.end();
             }
         } else {
-            res.redirect("/users");
+            res.redirect("/");
         }
     });
 
 
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/users', // redirect to the secure profile section
+        successRedirect: '/', // redirect to the secure profile section
         failureRedirect: '/login', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
     }));
-
-    // =====================================
-    // SIGN UP  ============================
-    // =====================================
-    app.get('/signup', function (req, res) {
-        var user = req.user;
-        if (!user) {
-            res.render("signup", { message: req.flash('signupMessage') });
-        } else {
-            res.redirect("/users");
-        }
-    });
 
     // =====================================
     // FACEBOOK ROUTES =====================
@@ -152,7 +152,7 @@ module.exports = function (app, passport, mongoose) {
     // handle the callback after facebook has authenticated the user
     app.get('/auth/facebook/callback',
 	    passport.authenticate('facebook', {
-	        successRedirect: '/users',
+	        successRedirect: '/',
 	        failureRedirect: '/'
 	    })
     );
@@ -166,7 +166,7 @@ module.exports = function (app, passport, mongoose) {
     // handle the callback after twitter has authenticated the user
     app.get('/auth/twitter/callback',
 		passport.authenticate('twitter', {
-		    successRedirect: '/users',
+		    successRedirect: '/',
 		    failureRedirect: '/'
 		})
     );
@@ -182,7 +182,7 @@ module.exports = function (app, passport, mongoose) {
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
         passport.authenticate('google', {
-            successRedirect: '/users',
+            successRedirect: '/',
             failureRedirect: '/'
         })
     );
@@ -198,7 +198,7 @@ module.exports = function (app, passport, mongoose) {
         res.render('users/edit', { message: req.flash('loginMessage'), user: user });
     });
     app.post('/users/edit', passport.authenticate('local-signup', {
-        successRedirect: '/users', // redirect to the secure profile section
+        successRedirect: '/', // redirect to the secure profile section
         failureRedirect: '/users/edit', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
     }));
@@ -213,7 +213,7 @@ module.exports = function (app, passport, mongoose) {
     // handle the callback after facebook has authorized the user
     app.get('/connect/facebook/callback',
 			passport.authorize('facebook', {
-			    successRedirect: '/users',
+			    successRedirect: '/',
 			    failureRedirect: '/'
 			})
         );
@@ -226,7 +226,7 @@ module.exports = function (app, passport, mongoose) {
     // handle the callback after twitter has authorized the user
     app.get('/connect/twitter/callback',
 			passport.authorize('twitter', {
-			    successRedirect: '/users',
+			    successRedirect: '/',
 			    failureRedirect: '/'
 			})
         );
@@ -239,11 +239,11 @@ module.exports = function (app, passport, mongoose) {
 
     // the callback after google has authorized the user
     app.get('/connect/google/callback',
-			passport.authorize('google', {
-			    successRedirect: '/users',
-			    failureRedirect: '/'
-			})
-        );
+		passport.authorize('google', {
+			successRedirect: '/',
+			failureRedirect: '/'
+		})
+    );
 
 
     // =============================================================================
@@ -276,19 +276,6 @@ module.exports = function (app, passport, mongoose) {
         });
     });
 
-
-
-    // =====================================
-    // ALL USERS ===========================
-    // =====================================
-    app.get('/users', isLoggedIn, function (req, res, next) {
-        var user = req.user;
-
-        Users.find({ deleted: false }, function (err, docs) {
-            sessionReload(req, res, next);
-            res.render('users/index', { users: docs, user: user });
-        });
-    });
 
     // =====================================
     // LOGOUT ==============================

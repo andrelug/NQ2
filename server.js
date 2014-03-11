@@ -39,7 +39,7 @@ app.configure(function(){
   app.use(express.json());
   app.use(express.urlencoded());
   app.use(express.cookieParser());
-  app.use(express.session({secret: 'cmsk3sle2i32lçcoe90ksd', cookie: {maxAge: 180000}}));
+  app.use(express.session({secret: 'cmsk3sle2i32lçcoe90ksd', cookie: {maxAge: 10800000 }}));
   app.use(passport.initialize());
   app.use(passport.session()); // persistent login sessions
   app.use(flash()); // use connect-flash for flash messages stored in session
