@@ -6,8 +6,9 @@ var total,
     male,
     female;
 
-var j = schedule.scheduleJob('* * * * *', function () {
-
+// it needs to have a colletion named stats and a document with name: stats
+var j = schedule.scheduleJob('0-59 * * * * *', function () {
+    
     Users.count({}, function (err, docs) {
         Stats.update({ 'name': 'stats' }, { $set: { 'users.total': docs} }, function (err, stats) {
             total = docs;
@@ -87,7 +88,7 @@ module.exports = function (app, passport, mongoose) {
                     var sendAge = { total: total, male: male, female: female, ageNum: docs.length };
                     res.end(JSON.stringify(sendAge));
                 });
-            }else{
+            } else {
                 var sendAge = { total: total, male: male, female: female, ageNum: docs.length };
                 res.end(JSON.stringify(sendAge));
             }
