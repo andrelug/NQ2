@@ -17,6 +17,7 @@ $('.area').css('width', offsets.left).css('height', offsets.top);
 // Step Functions
 
 var step1 = function () {
+    $('.input2').find('h2').show(200);
     $.ajax({
         url: "/name",
         type: "get",
@@ -26,14 +27,14 @@ var step1 = function () {
             console.log(data);
             sname = $.parseJSON(data);
             var data = [                          // Dounut chart info
-                {value: sname.name, color: "#F7464A"},
-                {value: sname.total, color: "#4D5360"}
+                {value: sname.name, color: "#F7464A" },
+                { value: sname.total, color: "#4D5360" }
             ],
             ctx = $("#chart").get(0).getContext("2d"),
             theChart = new Chart(ctx).Doughnut(data);      // Initialize Dounut chart
         }
     });
-    
+
     $('.login').slideDown();
     $('.input1').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
         $('.input2').find('h3').fadeIn(1500, function () {

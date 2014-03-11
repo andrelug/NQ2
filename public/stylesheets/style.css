@@ -53,6 +53,9 @@ input{
     display: block;
     cursor: pointer;
 }
+.input2 h2{
+    display: none;
+}
 .input2 h2, .input3 h2, .input4 h2{
     font-size: 20pt;
     margin: 0;
