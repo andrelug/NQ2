@@ -104,7 +104,7 @@ module.exports = function (app, passport, mongoose) {
     // USER SIGNUP =========================
     // ===================================== I should later find a way to pass params to the jade file here and put values on the inputs
     app.post('/newUser', passport.authenticate('local-signup', {
-        successRedirect: '/users', // redirect to the secure profile section
+        successRedirect: '/', // redirect to the secure profile section
         failureRedirect: '/signup', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages     
     }));
