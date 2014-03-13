@@ -29,7 +29,8 @@
     "passport-twitter": "*",
     "passport-google-oauth": "*",
     "connect-flash": "*",
-    "bcrypt-nodejs": "*"
+    "bcrypt-nodejs": "*",
+    "stylus": "*"
   },
   "noAnalyze": true,
   "license": "Apache",

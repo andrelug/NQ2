@@ -45,6 +45,7 @@ app.configure(function(){
   app.use(flash()); // use connect-flash for flash messages stored in session
   app.use(express.methodOverride());
   app.use(app.router);
+  app.use(require('stylus').middleware(path.join(__dirname, 'public')));
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
