@@ -138,10 +138,51 @@ body,
   width: 100%;
   height: 400%;
 }
-.bottom {
-  position: fixed;
-  bottom: 0;
-  right: 0;
+.input1,
+.input2,
+.input3,
+.input4 {
+  position: relative;
+  display: none;
+}
+.main,
+.main1,
+.main2,
+.main3,
+.main4,
+.main5 {
+  margin: 0 auto;
+  position: relative;
+  top: 40%;
+}
+@media screen and (max-width: 600px) {
+  .main,
+  .main1,
+  .main2,
+  .main3,
+  .main4,
+  .main5,
+.main1,
+.main2,
+.main3,
+.main4,
+.main5 {
+    top: 40%;
+    width: 400px;
+  }
+}
+.main1,
+.main2 {
+  width: 42%;
+}
+.main3 {
+  width: 556px;
+}
+.main4 {
+  width: 610px;
+}
+.main5 {
+  width: 835px;
 }
 input {
   outline: none;
@@ -153,12 +194,10 @@ input {
   margin-top: 15px;
   margin-bottom: 0;
 }
-.input1,
-.input2,
-.input3,
-.input4 {
-  padding: 18% 0 0 30%;
-  position: relative;
+@media screen and (max-width: 600px) {
+  input {
+    width: 400px;
+  }
 }
 .login {
   position: fixed;
@@ -208,16 +247,21 @@ input {
   text-align: center;
   text-decoration: none;
   height: auto;
-  background-color: #4a4d4d;
+  background-color: #5c5f5f;
   color: #fff;
   padding: 10px;
   width: 500px;
-  opacity: 0.9;
   display: none;
+}
+@media screen and (max-width: 600px) {
+  .submits,
+  .submitsAge {
+    width: 400px;
+  }
 }
 .submits:hover,
 .submitsAge:hover {
-  background-color: #6a6f6f;
+  background-color: #7c8080;
 }
 #chart {
   position: absolute;
@@ -248,7 +292,7 @@ input {
   position: absolute;
   display: none;
   left: 347px;
-  background-color: #4a4d4d;
+  background-color: #5c5f5f;
   text-align: center;
   text-decoration: none;
   padding: 14px;
@@ -260,7 +304,7 @@ input {
   position: absolute;
   display: none;
   left: 67%;
-  background-color: #4a4d4d;
+  background-color: #5c5f5f;
   text-align: center;
   text-decoration: none;
   padding: 14px;
@@ -290,14 +334,14 @@ input {
   height: auto;
   color: #fff;
   padding: 10px;
-  width: 240px;
+  width: 243px;
   opacity: 0.9;
   display: block;
 }
 .gender li a:hover,
 .input5 li a:hover,
 .loginPage li a:hover {
-  background-color: #6a6f6f;
+  background-color: #7c8080;
 }
 .input3 h5 {
   margin: 10px 0 20px 0;
@@ -360,7 +404,6 @@ input {
   left: 0;
   z-index: 99;
   background-color: #fff;
-  padding: 15% 0 0 21%;
 }
 .input5 h1 {
   font-size: 20pt;
@@ -386,7 +429,7 @@ input {
 }
 .errAge {
   position: absolute;
-  top: 35%;
+  top: 0;
   display: none;
 }
 .loginPage {

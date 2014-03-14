@@ -1,4 +1,4 @@
-extends layouts/layout
+extends layouts/layout-landing
 
 block content
     div.login
@@ -9,70 +9,75 @@ block content
     div.window.area
         div.container
             div.input1.area
-                h2 What is your name?
-                input.appender(type="text", autofocus)
-                a.submits(href="#") enter
+                div.main1
+                    h2 What is your name?
+                    input.appender(type="text", autofocus)
+                    a.submits(href="#") enter
             div.input2.area
-                div.appenderAge
-                    input(type="text", placeholder="How old are you?")
-                    a.submitsAge(href="#") enter
-                    p.errAge Please, type only numeric characters
-                h2 Hi 
-                    span.appended2
-                    br
-                    | <span style="font-size: 12pt;">welcome to Normal Questions</span>
+                div.main2
+                    div.appenderAge
+                        input(type="text", placeholder="How old are you?")
+                        a.submitsAge(href="#") enter
+                        p.errAge Please, type only numeric characters
+                    h2 Hi 
+                        span.appended2
+                        br
+                        | <span style="font-size: 12pt;">welcome to Normal Questions</span>
 
-                h3 Everyone is different
-                    span ...but how much?
+                    h3 Everyone is different
+                        span ...but how much?
                 p.canva1p
                 a.canva1a(href="#") continue
 
                 canvas#chart(width="600", height="600")
 
             div.input3.area
-                h2 Great!
-                h5 now choose which option describes you best
+                div.main3
+                    h2 Great!
+                    h5 now choose which option describes you best
 
-                ul.gender
-                    li
-                        a.male(href="#") Male
-                    li
-                        a.female(href="#") Female
-                h3
-                h4
+                    ul.gender
+                        li
+                            a.male(href="#") Male
+                        li
+                            a.female(href="#") Female
+                    h3
+                    h4
                 a.canva2a(href="#") continue
 
                 canvas#ageChart(width="500", height="500")
 
             div.input4.area
-                h2 We like analytics and privacy
-                    span as well as animations
-                h3 Do you want to experience how awesome your stats can look like?
+                div.main4
+                    h2 We like analytics and privacy
+                        span as well as animations
+                    h3 Do you want to experience how awesome your stats can look like?
                 a.register(href="#") Register
             
             div.input5.area
-                h1 Welcome to Normal Questions
+                div.main5
+                    h1 Welcome to Normal Questions
 
-                if(message.length > 0)
-                    div #{ message }
+                    if(message.length > 0)
+                        div #{ message }
 
-                form(method="post", action="/newUser")
-                    input#fname(type="text", name="firstName", placeholder="First Name")
+                    form(method="post", action="/newUser")
+                        input#fname(type="text", name="firstName", placeholder="First Name")
 
-                    input#gender(type="hidden", name="gender")
+                        input#gender(type="hidden", name="gender")
 
-                    input(type="text", name="loginName", placeholder="Login Name")
+                        input(type="text", name="loginName", placeholder="Login Name")
 
-                    input(type="text", name="email", placeholder="Email")
+                        input(type="text", name="email", placeholder="Email")
 
-                    input(type="password", name="password", placeholder="Password")
+                        input(type="password", name="password", placeholder="Password")
 
-                    input.submit(type="submit", value="Register")
+                        input.submit(type="submit", value="Register")
 
-                ul
-                    li
-                        a.facebook(href="/auth/facebook") <i class="fa fa-facebook"></i> Facebook Login
-                    li
-                        a.twitter(href="/auth/twitter") <i class="fa fa-twitter"></i> Twitter Login
-                    li
-                        a.google(href="/auth/google") <i class="fa fa-google-plus"></i> Google Login
+                    ul
+                        li
+                            a.facebook(href="/auth/facebook") <i class="fa fa-facebook"></i> Facebook Login
+                        li
+                            a.twitter(href="/auth/twitter") <i class="fa fa-twitter"></i> Twitter Login
+                        li
+                            a.google(href="/auth/google") <i class="fa fa-google-plus"></i> Google Login
