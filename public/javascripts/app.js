@@ -43,8 +43,8 @@
 
         $('.login').slideDown();
         $('.input1').animate({ 'margin-top': -offsets.top }, 1000, 'swing', function () {
-            $('.input2').find('h3').fadeIn(1500, function () {
-                $('.input2 h3').find('span').delay(500).fadeIn(500, function () {
+            $('.input2').find('h3').fadeIn(700, function () {
+                $('.input2 h3').find('span').delay(300).fadeIn(500, function () {
                     $('#chart').animate({ 'left': -300 }, 500, 'swing', function () {
                         $('.canva1p').show().html(Math.round(sname.name * 100 / sname.total) + ' % of our users are called ' + name).animate({ 'top': 185 }, 400, function () {
                             $('.canva1a').css('top', 110).fadeIn(1000).css('dispay', 'block');
