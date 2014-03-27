@@ -227,6 +227,7 @@ module.exports = function (passport) {
                             newUser.sites = profile._json.website;
                             newUser.localization.city = profile._json.hometown.name;
                             newUser.name.parsed = func.string_to_slug(profile.name.givenName);
+                            newUser.photo = "http://graph.facebook.com/" + profile.username + "/picture?type=large"
 
                             // save our user to the database
                             newUser.save(function (err) {
@@ -324,7 +325,7 @@ module.exports = function (passport) {
                             // basic profile
                             newUser.email = "Needed";
                             newUser.name.first = profile.displayName;
-                            newUser.photo = profile.photos[0].value;
+                            newUser.photo = profile.photos[0].value.replace('_normal', '');
                             newUser.localization.city = profile._json.location;
                             newUser.bio = profile._json.description;
                             newUser.name.parsed = func.string_to_slug(profile.displayName);

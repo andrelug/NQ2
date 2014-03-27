@@ -10,12 +10,6 @@ var express = require('express')
 
 var app = express();
 
-if ('development' == app.get('env')) {
-  var connectionString = 'mongodb://localhost/normalquestions'
-}else{
-  var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI
-}
-
 mongoose.connect(configDB.url);
 
 require('./config/passport.js')(passport); // pass passport for configuration
