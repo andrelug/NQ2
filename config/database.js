@@ -8,6 +8,6 @@ if('development' == app.get('env')) {
     }
 }else{
     module.exports = {
-        'url': process.env.CUSTOMCONNSTR_MONGOLAB_URI
+      //  'url': process.env.CUSTOMCONNSTR_MONGOLAB_URI
     }
 }
