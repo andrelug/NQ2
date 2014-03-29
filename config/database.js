@@ -4,7 +4,7 @@ var express = require('express'),
 
 if('development' == app.get('env')) {
     module.exports = {
-        'url': 'mongodb://localhost/normalquestions'
+        'url': process.env.CUSTOMCONNSTR_MONGOLAB_URI
     }
 }else{
     module.exports = {
