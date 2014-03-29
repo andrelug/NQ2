@@ -4,10 +4,10 @@ var express = require('express'),
 
 if('development' == app.get('env')) {
     module.exports = {
-        'url': process.env.CUSTOMCONNSTR_MONGOLAB_URI
+        'url': 'mongodb://localhost/normalquestions'
     }
 }else{
     module.exports = {
-      //  'url': process.env.CUSTOMCONNSTR_MONGOLAB_URI
+        'url': process.env.CUSTOMCONNSTR_MONGOLAB_URI
     }
 }
