@@ -2,7 +2,7 @@
 var express = require('express'),
     app = express();
 
-if('production' == app.get('env')) {
+if('development' == app.get('env')) {
     module.exports = {
         'url': 'mongodb://localhost/normalquestions'
     }
